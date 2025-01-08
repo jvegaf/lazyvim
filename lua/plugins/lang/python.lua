@@ -46,6 +46,9 @@ return {
     'neolooong/whichpy.nvim',
     ft = { 'python' },
     opts = {},
+    keys = {
+      { '<leader>cw', '<cmd>WhichPy select<cr>' },
+    },
   },
   {
     'SWiegandt/autoself.nvim',
