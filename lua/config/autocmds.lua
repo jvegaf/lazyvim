@@ -46,6 +46,11 @@ autocmds({ 'FileType' }, {
 -- })
 -- Turn off paste mode when leaving insert
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'make',
+  command = 'setlocal noexpandtab',
+})
+
 autocmds('InsertLeave', {
   pattern = '*',
   command = 'set nopaste',

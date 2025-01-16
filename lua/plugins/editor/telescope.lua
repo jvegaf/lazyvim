@@ -7,6 +7,8 @@ return {
         build = 'make',
       },
       'nvim-telescope/telescope-file-browser.nvim',
+      'mattn/vim-sonictemplate',
+      'arakkkkk/telescope-sonictemplate.nvim',
     },
     keys = {
       {
@@ -47,6 +49,11 @@ return {
       },
       {
         ';t',
+        '<Cmd>lua require("telescope").extensions.sonictemplate.templates{}<CR>',
+        desc = 'Lists available templates',
+      },
+      {
+        ';h',
         function()
           local builtin = require('telescope.builtin')
           builtin.help_tags()
