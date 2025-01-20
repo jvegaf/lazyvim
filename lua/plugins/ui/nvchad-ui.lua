@@ -1,5 +1,6 @@
 return {
   'NvChad/ui',
+  enabled = false,
   lazy = false,
   opts = {
     base46 = { theme = 'onedark' },

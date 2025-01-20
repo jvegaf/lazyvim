@@ -44,8 +44,8 @@ keymap.set("n", "gk", function() vim.diagnostic.goto_prev() end, { desc = "Previ
 keymap.set("n", "gj", function() vim.diagnostic.goto_next() end, { desc = "Next Diagnostic" })
 keymap.set("n", "<leader>xx", function() builtin.diagnostics({ bufnr = 0 }) end, { desc = "Buffer diagnostics" })
 keymap.set("n", "<leader>xX", function() builtin.diagnostics({ root_dir = true }) end, { desc = "cwd diagnostics" })
-keymap.set("n", "<localleader>xx", vim.lsp.code_action, { desc = "Code Action" })
-keymap.set("n", "<localleader>xX", LazyVim.lsp.action.source, { desc = "Source Action" })
+-- keymap.set("n", "<localleader>xx", vim.lsp.code_action, { desc = "Code Action" })
+-- keymap.set("n", "<localleader>xX", LazyVim.lsp.action.source, { desc = "Source Action" })
 
 -- dont yank on visual paste
 keymap.set("v", "p", '"_dP', NS)
