@@ -12,12 +12,12 @@ local NS = { noremap = true, silent = true }
 keymap.set("i", "jk", "<ESC>", NS) -- exit insert mode with jk
 keymap.set("n", "<leader>wq", ":wq<CR>", NS) -- save and quit
 keymap.set("n", "<leader>q", ":q!<CR>", NS) -- quit without saving
-keymap.set("n", "W", ":w<CR>", NS) -- save
-keymap.set("n", "Q", ":bdelete<CR>", NS) -- close buffer
+keymap.set("n", "<localleader>w", ":w<CR>", NS)           -- save
+keymap.set("n", "<localleader>q", ":Bdelete<CR>", NS)     -- close buffer
 
 -- Buffers
-keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", NS)
-keymap.set("n", "<Tab>", ":BufferLineCycleNext<cr>", NS)
+keymap.set("n", "H", ":BufferLineCyclePrev<cr>", NS)
+keymap.set("n", "L", ":BufferLineCycleNext<cr>", NS)
 keymap.set("n", "<leader>bb", ":e #<cr>", NS)
 
 -- Tab management
