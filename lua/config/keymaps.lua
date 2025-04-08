@@ -13,7 +13,7 @@ keymap.set("i", "jk", "<ESC>", NS) -- exit insert mode with jk
 keymap.set("n", "<leader>wq", ":wq<CR>", NS) -- save and quit
 keymap.set("n", "<leader>q", ":q!<CR>", NS) -- quit without saving
 keymap.set("n", "<localleader>w", ":w<CR>", NS)           -- save
-keymap.set("n", "<localleader>q", ":Bdelete<CR>", NS)     -- close buffer
+keymap.set("n", "<localleader>q", ":bdelete<CR>", NS)     -- close buffer
 
 -- Buffers
 keymap.set("n", "H", ":BufferLineCyclePrev<cr>", NS)
