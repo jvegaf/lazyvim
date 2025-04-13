@@ -1,8 +1,8 @@
 return {
-  "kevinhwang91/nvim-hlslens",
-  event = "VeryLazy",
+  'kevinhwang91/nvim-hlslens',
+  event = 'VeryLazy',
   config = function()
-    require("hlslens").setup({
+    require('hlslens').setup({
       -- set to false to disable the default highlight group
       -- default = true,
       -- the name of highlight group
@@ -22,5 +22,19 @@ return {
       -- whether to enabled hlslens for copilot
       enable_copilot = true,
     })
+    local kopts = { noremap = true, silent = true }
+
+    vim.api.nvim_set_keymap(
+      'n',
+      'n',
+      [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+      kopts
+    )
+    vim.api.nvim_set_keymap(
+      'n',
+      'N',
+      [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+      kopts
+    )
   end,
 }

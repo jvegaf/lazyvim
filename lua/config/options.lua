@@ -51,7 +51,7 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 --   stl = ' ',
 -- }
 
-vim.opt.shortmess:append('c')
+-- vim.opt.shortmess:append('c')
 
 vim.opt.diffopt = { 'internal', 'filler', 'closeoff', 'hiddenoff', 'algorithm:minimal' }
 
@@ -87,7 +87,7 @@ vim.api.nvim_create_autocmd('InsertLeave', {
 -- Add asterisks in block comments
 vim.opt.formatoptions:append({ 'r' })
 
-vim.wo.signcolumn = 'yes'
+-- vim.wo.signcolumn = 'yes'
 
 for k, v in pairs(options) do
   vim.opt[k] = v
