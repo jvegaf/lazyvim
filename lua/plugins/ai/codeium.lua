@@ -2,12 +2,24 @@ return {
 
   {
     'monkoose/neocodeium',
-    event = 'VeryLazy',
-    -- enabled = vim.fn.has "nvim-0.10" == 1,
-    -- enabled = false,
+    event = 'InsertEnter',
     config = function()
       local neocodeium = require('neocodeium')
       neocodeium.setup()
+
+      local commands = require('neocodeium.commands')
+      if vim.g.codeium_cmp_hide == true then
+        local cmp = require('cmp')
+        cmp.event:on('menu_opened', function()
+          commands.disable()
+          neocodeium.clear()
+        end)
+
+        cmp.event:on('menu_closed', function()
+          commands.enable()
+        end)
+      end
+
       vim.keymap.set('i', '<A-f>', neocodeium.accept)
       vim.keymap.set('i', '<A-w>', function()
         require('neocodeium').accept_word()

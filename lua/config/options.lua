@@ -103,5 +103,9 @@ vim.filetype.add({
   },
 })
 
+vim.filetype.add({
+  ['.qss'] = 'css',
+})
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
