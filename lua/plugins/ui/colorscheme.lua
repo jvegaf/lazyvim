@@ -1,5 +1,18 @@
 return {
   {
+    'AstroNvim/astrotheme',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('astrotheme').setup({
+        -- style = {
+        --   transparent = true,
+        -- },
+      })
+      vim.cmd.colorscheme('astrotheme')
+    end,
+  },
+  {
     'tanvirtin/monokai.nvim',
     lazy = false,
     priority = 1000,
@@ -13,7 +26,7 @@ return {
         style = 'deep',
         transparent = true,
       })
-      require('onedark').load()
+      -- require('onedark').load()
     end,
   },
   {
