@@ -7,16 +7,12 @@ return {
     provider = 'ollama',
 
     -- Working Ollama configuration
-    vendors = {
-      ollama = {
-        __inherited_from = 'openai',
-        api_key_name = '',
-        endpoint = 'http://127.0.0.1:11434/v1',
-        model = 'qwen2.5-coder',
-        max_tokens = 4096,
-        -- important to set this to true if you are using a local server
-        disable_tools = true,
-      },
+    ollama = {
+      endpoint = 'http://127.0.0.1:11434',
+      model = 'qwen2.5-coder',
+      -- max_tokens = 4096,
+      -- important to set this to true if you are using a local server
+      -- disable_tools = true,
     },
 
     behaviour = {
