@@ -1,6 +1,5 @@
 vim.opt_local.shiftwidth = 4
 vim.opt_local.tabstop = 4
-vim.opt_local.cmdheight = 4 -- more space in the neovim command line for displaying messages
 
 -- local status = pcall(require, "jdtls")
 -- if not status then
