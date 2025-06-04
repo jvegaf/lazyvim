@@ -1,8 +1,13 @@
 return {
   'zbirenbaum/copilot.lua',
-  optional = true,
-  opts = function()
-    require('copilot.api').status = require 'copilot.status'
+  lazy = false,
+  opts = {
+    suggestion = { enabled = false },
+    panel = { enabled = false },
+  },
+  config = function(_, opts)
+    require('copilot').setup(opts)
+    require('copilot.api').status = require('copilot.status')
     require('copilot.api').filetypes = {
       filetypes = {
         yaml = false,

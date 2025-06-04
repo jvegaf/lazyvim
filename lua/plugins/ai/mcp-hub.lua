@@ -7,4 +7,5 @@ return {
   config = function()
     require('mcphub').setup()
   end,
+  keys = {},
 }

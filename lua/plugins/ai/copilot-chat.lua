@@ -29,6 +29,7 @@ return {
   {
     -- Copilot Chat plugin configuration
     'CopilotC-Nvim/CopilotChat.nvim',
+    lazy = false,
     branch = 'main',
     cmd = 'CopilotChat',
     opts = {
