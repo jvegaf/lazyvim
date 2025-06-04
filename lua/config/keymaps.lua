@@ -42,8 +42,8 @@ keymap.set("n", "<localleader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", NS)
 --diagnotic keymaps
 keymap.set("n", "gk", function() vim.diagnostic.goto_prev() end, { desc = "Previous Diagnostic" })
 keymap.set("n", "gj", function() vim.diagnostic.goto_next() end, { desc = "Next Diagnostic" })
-keymap.set("n", "<leader>xx", function() builtin.diagnostics({ bufnr = 0 }) end, { desc = "Buffer diagnostics" })
-keymap.set("n", "<leader>xX", function() builtin.diagnostics({ root_dir = true }) end, { desc = "cwd diagnostics" })
+-- keymap.set("n", "<leader>xx", function() builtin.diagnostics({ bufnr = 0 }) end, { desc = "Buffer diagnostics" })
+-- keymap.set("n", "<leader>xX", function() builtin.diagnostics({ root_dir = true }) end, { desc = "cwd diagnostics" })
 -- keymap.set("n", "<localleader>xx", vim.lsp.code_action, { desc = "Code Action" })
 -- keymap.set("n", "<localleader>xX", LazyVim.lsp.action.source, { desc = "Source Action" })
 
@@ -64,6 +64,9 @@ keymap.set("v", ">", ">gv", { desc = "Stay in indent mode" })
 -- Jumplist
 keymap.set("n", "<C-m>", "<C-i>", NS)
 
+-- Copilot Chat
+keymap.set("n", "<leader>am", ":CopilotChatCommit<cr>", NS)
+
 -- Treesj
 keymap.set("n", "<leader>j", function()
   require("treesj").toggle({ split = { recusive = true } })
@@ -79,8 +82,8 @@ keymap.set("n", "<leader>za", ":messages<cr>", { desc = "Messages" })
 
 keymap.set("n", "<leader>uc", function() require("nvchad.themes").open() end, { noremap = true, silent = true, desc = "ColorSchemes" })
 -- FileBrowser
-keymap.set("n", "<localleader>e", ":NvimTreeFocus<CR>", NS) -- toggle file explorer
-keymap.set("n", "<localleader>E", ":Telescope file_browser<CR>", NS) -- toggle focus to file explorer
+keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", NS) -- toggle file explorer
+-- keymap.set("n", "<localleader>E", ":Telescope file_browser<CR>", NS) -- toggle focus to file explorer
 
 keymap.set("n", "gq", "<leader>cf", NS)
 -- stylua: ignore end
