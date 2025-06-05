@@ -82,7 +82,7 @@ keymap.set("n", "<leader>za", ":messages<cr>", { desc = "Messages" })
 
 keymap.set("n", "<leader>uc", function() require("nvchad.themes").open() end, { noremap = true, silent = true, desc = "ColorSchemes" })
 -- FileBrowser
-keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", NS) -- toggle file explorer
+keymap.set("n", "<leader>e", ":NvimTreeOpen<CR>", NS) -- toggle file explorer
 -- keymap.set("n", "<localleader>E", ":Telescope file_browser<CR>", NS) -- toggle focus to file explorer
 
 keymap.set("n", "gq", "<leader>cf", NS)
