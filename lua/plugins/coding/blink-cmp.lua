@@ -4,11 +4,10 @@ return {
     event = 'VimEnter',
     version = '1.*',
     dependencies = {
-      { 'saghen/blink.compat' },
+      -- { 'saghen/blink.compat' },
+      'giuxtaposition/blink-cmp-copilot',
+      'olimorris/codecompanion.nvim',
       -- Snippet Engine
-      {
-        'giuxtaposition/blink-cmp-copilot',
-      },
       {
         'L3MON4D3/LuaSnip',
         version = '2.*',
@@ -35,6 +34,7 @@ return {
         opts = {},
       },
       'folke/lazydev.nvim',
+      'Kaiser-Yang/blink-cmp-avante',
       { 'rafamadriz/friendly-snippets', lazy = true },
     },
     --- @module 'blink.cmp'
@@ -69,59 +69,113 @@ return {
       },
 
       appearance = {
-        -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-        -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = 'mono',
-      },
+        -- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
+        kind_icons = {
+          Copilot = '',
+          Text = '󰉿',
+          Method = '󰊕',
+          Function = '󰊕',
+          Constructor = '󰒓',
 
+          Field = '󰜢',
+          Variable = '󰆦',
+          Property = '󰖷',
+
+          Class = '󱡠',
+          Interface = '󱡠',
+          Struct = '󱡠',
+          Module = '󰅩',
+
+          Unit = '󰪚',
+          Value = '󰦨',
+          Enum = '󰦨',
+          EnumMember = '󰦨',
+
+          Keyword = '󰻾',
+          Constant = '󰏿',
+
+          Snippet = '󱄽',
+          Color = '󰏘',
+          File = '󰈔',
+          Reference = '󰬲',
+          Folder = '󰉋',
+          Event = '󱐋',
+          Operator = '󰪚',
+          TypeParameter = '󰬛',
+        },
+      },
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
+        accept = { auto_brackets = { enabled = true } },
       },
 
       sources = {
         default = {
+          'codecompanion',
           'lsp',
           'path',
           'snippets',
           'lazydev',
+          'avante',
           'copilot',
-          'avante_commands',
-          'avante_mentions',
-          'avante_files',
+          -- 'avante_commands',
+          -- 'avante_mentions',
+          -- 'avante_files',
         },
-        compat = {
-          'avante_commands',
-          'avante_mentions',
-          'avante_files',
-        },
+        -- compat = {
+        --   'avante_commands',
+        --   'avante_mentions',
+        --   'avante_files',
+        -- },
         providers = {
-          lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          codecompanion = {
+            name = 'CodeCompanion',
+            module = 'codecompanion.providers.completion.blink',
+            enabled = true,
+          },
           copilot = {
             name = 'copilot',
             module = 'blink-cmp-copilot',
-            score_offset = 1000,
-            async = true,
-          },
-          avante_commands = {
-            name = 'avante_commands',
-            module = 'blink.compat.source',
-            score_offset = 90,
-            opts = {},
-          },
-          avante_files = {
-            name = 'avante_files',
-            module = 'blink.compat.source',
             score_offset = 100,
-            opts = {},
+            async = true,
+            transform_items = function(_, items)
+              local CompletionItemKind = require('blink.cmp.types').CompletionItemKind
+              local kind_idx = #CompletionItemKind + 1
+              CompletionItemKind[kind_idx] = 'Copilot'
+              for _, item in ipairs(items) do
+                item.kind = kind_idx
+              end
+              return items
+            end,
           },
-          avante_mentions = {
-            name = 'avante_mentions',
-            module = 'blink.compat.source',
-            score_offset = 1000,
-            opts = {},
+          lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+            opts = {
+              -- options for blink-cmp-avante
+            },
           },
+          -- avante_commands = {
+          --   name = 'avante_commands',
+          --   module = 'blink.compat.source',
+          --   score_offset = 90,
+          --   opts = {},
+          -- },
+          -- avante_files = {
+          --   name = 'avante_files',
+          --   module = 'blink.compat.source',
+          --   score_offset = 100,
+          --   opts = {},
+          -- },
+          -- avante_mentions = {
+          --   name = 'avante_mentions',
+          --   module = 'blink.compat.source',
+          --   score_offset = 1000,
+          --   opts = {},
+          -- },
         },
       },
 
@@ -138,6 +192,38 @@ return {
 
       -- Shows a signature help window while you type arguments for a function
       signature = { enabled = true },
+    },
+  },
+  {
+    'saghen/blink.pairs',
+    version = '*', -- (recommended) only required with prebuilt binaries
+    -- download prebuilt binaries from github releases
+    dependencies = 'saghen/blink.download',
+    -- OR build from source
+    build = 'cargo build --release',
+    -- OR build from source with nix
+    --- @module 'blink.pairs'
+    --- @type blink.pairs.Config
+    opts = {
+      mappings = {
+        -- you can call require("blink.pairs.mappings").enable() and require("blink.pairs.mappings").disable() to enable/disable mappings at runtime
+        enabled = true,
+        -- see the defaults: https://github.com/Saghen/blink.pairs/blob/main/lua/blink/pairs/config/mappings.lua#L10
+        pairs = {},
+      },
+      highlights = {
+        enabled = true,
+        groups = {
+          'BlinkPairsOrange',
+          'BlinkPairsPurple',
+          'BlinkPairsBlue',
+        },
+        matchparen = {
+          enabled = true,
+          group = 'MatchParen',
+        },
+      },
+      debug = false,
     },
   },
 }

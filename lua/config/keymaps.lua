@@ -40,8 +40,8 @@ keymap.set("n", "<localleader>qc", ":cclose<CR>") -- close quickfix list
 keymap.set("n", "<localleader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", NS)
 
 --diagnotic keymaps
-keymap.set("n", "gk", function() vim.diagnostic.goto_prev() end, { desc = "Previous Diagnostic" })
-keymap.set("n", "gj", function() vim.diagnostic.goto_next() end, { desc = "Next Diagnostic" })
+keymap.set("n", "gk", function() vim.diagnostic.jump({count= -1,float = true}) end, { desc = "Previous Diagnostic" })
+keymap.set("n", "gj", function() vim.diagnostic.jump({count= 1,float = true}) end, { desc = "Next Diagnostic" })
 -- keymap.set("n", "<leader>xx", function() builtin.diagnostics({ bufnr = 0 }) end, { desc = "Buffer diagnostics" })
 -- keymap.set("n", "<leader>xX", function() builtin.diagnostics({ root_dir = true }) end, { desc = "cwd diagnostics" })
 -- keymap.set("n", "<localleader>xx", vim.lsp.code_action, { desc = "Code Action" })
@@ -74,7 +74,7 @@ end, { noremap = true, silent = true, desc = "Toggle Split Join" })
 
 -- System
 keymap.set("n", "<leader>zc", ":e $MYVIMRC<cr>", { noremap = true, silent = true, desc = "Config" })
-keymap.set("n", "<leader>zn", ":NoiceHistory<cr>", { noremap = true, silent = true, desc = "Notifications" })
+-- keymap.set("n", "<leader>zn", ":NoiceHistory<cr>", { noremap = true, silent = true, desc = "Notifications" })
 keymap.set("n", "<leader>zh", ":checkhealth<cr>", { noremap = true, silent = true, desc = "Health" })
 keymap.set("n", "<leader>zm", ":Mason<cr>", { noremap = true, silent = true, desc = "Mason" })
 keymap.set("n", "<leader>zl", ":Lazy<cr>", { noremap = true, silent = true, desc = "Lazy" })
@@ -82,7 +82,7 @@ keymap.set("n", "<leader>za", ":messages<cr>", { desc = "Messages" })
 
 keymap.set("n", "<leader>uc", function() require("nvchad.themes").open() end, { noremap = true, silent = true, desc = "ColorSchemes" })
 -- FileBrowser
-keymap.set("n", "<leader>e", ":NvimTreeOpen<CR>", NS) -- toggle file explorer
+keymap.set("n", "<leader>e", function() Snacks.explorer() end, NS) -- toggle file explorer
 -- keymap.set("n", "<localleader>E", ":Telescope file_browser<CR>", NS) -- toggle focus to file explorer
 
 keymap.set("n", "gq", "<leader>cf", NS)
