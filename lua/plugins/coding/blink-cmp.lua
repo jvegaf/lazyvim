@@ -10,6 +10,7 @@ return {
       -- Snippet Engine
       {
         'L3MON4D3/LuaSnip',
+        lazy = false,
         version = '2.*',
         build = (function()
           -- Build Step is needed for regex support in snippets.
@@ -24,18 +25,18 @@ return {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
         opts = {},
       },
       'folke/lazydev.nvim',
       'Kaiser-Yang/blink-cmp-avante',
-      { 'rafamadriz/friendly-snippets', lazy = true },
+      -- { 'rafamadriz/friendly-snippets', lazy = true },
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
