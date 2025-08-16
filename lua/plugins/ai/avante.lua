@@ -8,7 +8,7 @@ return {
       provider = 'copilot', -- Recommend using Claude
       providers = {
         copilot = {
-          model = 'claude-3.7-sonnet', -- o1-preview | o1-mini | claude-3.7-sonnet
+          model = 'claude-sonnet-4', -- o1-preview | o1-mini | claude-3.7-sonnet
         },
       },
       cursor_applying_provider = 'copilot', -- In this example, use Groq for applying, but you can also use any provider you want.
