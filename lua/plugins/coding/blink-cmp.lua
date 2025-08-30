@@ -4,31 +4,7 @@ return { -- Autocompletion
   version = '1.*',
   dependencies = {
     -- Snippet Engine
-    {
-      'L3MON4D3/LuaSnip',
-      version = '2.*',
-      build = (function()
-        -- Build Step is needed for regex support in snippets.
-        -- This step is not supported in many windows environments.
-        -- Remove the below condition to re-enable on windows.
-        if vim.fn.has('win32') == 1 or vim.fn.executable('make') == 0 then
-          return
-        end
-        return 'make install_jsregexp'
-      end)(),
-      dependencies = {
-        -- `friendly-snippets` contains a variety of premade snippets.
-        --    See the README about individual language/framework/plugin snippets:
-        --    https://github.com/rafamadriz/friendly-snippets
-        -- {
-        --   'rafamadriz/friendly-snippets',
-        --   config = function()
-        --     require('luasnip.loaders.from_vscode').lazy_load()
-        --   end,
-        -- },
-      },
-      opts = {},
-    },
+    'rafamadriz/friendly-snippets', -- snippet source
     'folke/lazydev.nvim',
   },
   --- @module 'blink.cmp'
@@ -81,8 +57,6 @@ return { -- Autocompletion
       },
     },
 
-    snippets = { preset = 'luasnip' },
-
     -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
     -- which automatically downloads a prebuilt binary when enabled.
     --
@@ -90,11 +64,22 @@ return { -- Autocompletion
     -- the rust implementation via `'prefer_rust_with_warning'`
     --
     -- See :h blink-cmp-config-fuzzy for more information
-    fuzzy = { implementation = 'lua' },
+    fuzzy = { implementation = 'prefer_rust_with_warning' },
 
     -- Shows a signature help window while you type arguments for a function
     signature = { enabled = true },
   },
+  config = function(_, opts)
+    -- require("blink.compat").setup()
+    require('luasnip').setup({
+      enable_autosnippets = true,
+    })
+
+    require('luasnip.loaders.from_lua').lazy_load()
+    require('luasnip.loaders.from_lua').lazy_load({ './my_snippets' })
+
+    require('blink.cmp').setup(opts)
+  end,
 }
 
 -- vim: ts=2 sts=2 sw=2 et
