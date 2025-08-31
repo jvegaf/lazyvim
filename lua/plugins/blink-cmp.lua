@@ -3,9 +3,8 @@ return { -- Autocompletion
   event = 'VimEnter',
   version = '1.*',
   dependencies = {
-    -- Snippet Engine
-    'rafamadriz/friendly-snippets', -- snippet source
     'folke/lazydev.nvim',
+    'saghen/blink.compat',
   },
   --- @module 'blink.cmp'
   --- @type blink.cmp.Config
@@ -32,7 +31,7 @@ return { -- Autocompletion
       -- <c-k>: Toggle signature help
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      preset = 'default',
+      preset = 'enter',
 
       -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
       --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -51,11 +50,39 @@ return { -- Autocompletion
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'lazydev' },
+      default = {
+        'avante_commands',
+        'avante_mentions',
+        'avante_files',
+        'lsp',
+        'path',
+        'snippets',
+        'lazydev',
+      },
       providers = {
+        avante_commands = {
+          name = 'avante_commands',
+          module = 'blink.compat.source',
+          score_offset = 90,
+          opts = {},
+        },
+        avante_files = {
+          name = 'avante_files',
+          module = 'blink.compat.source',
+          score_offset = 100,
+          opts = {},
+        },
+        avante_mentions = {
+          name = 'avante_mentions',
+          module = 'blink.compat.source',
+          score_offset = 1000,
+          opts = {},
+        },
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
       },
     },
+
+    -- snippets = { preset = 'luasnip' },
 
     -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
     -- which automatically downloads a prebuilt binary when enabled.
@@ -64,22 +91,11 @@ return { -- Autocompletion
     -- the rust implementation via `'prefer_rust_with_warning'`
     --
     -- See :h blink-cmp-config-fuzzy for more information
-    fuzzy = { implementation = 'prefer_rust_with_warning' },
+    fuzzy = { implementation = 'prefer_rust' },
 
     -- Shows a signature help window while you type arguments for a function
     signature = { enabled = true },
   },
-  config = function(_, opts)
-    -- require("blink.compat").setup()
-    require('luasnip').setup({
-      enable_autosnippets = true,
-    })
-
-    require('luasnip.loaders.from_lua').lazy_load()
-    require('luasnip.loaders.from_lua').lazy_load({ './my_snippets' })
-
-    require('blink.cmp').setup(opts)
-  end,
 }
 
 -- vim: ts=2 sts=2 sw=2 et

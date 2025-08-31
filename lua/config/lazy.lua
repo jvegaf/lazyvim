@@ -16,15 +16,44 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   spec = {
-    -- add LazyVim and import its plugins
     { 'LazyVim/LazyVim', import = 'lazyvim.plugins' },
-    -- import/override with your plugins
-    { import = 'plugins.core' },
-    { import = 'plugins.editor' },
-    { import = 'plugins.coding' },
-    { import = 'plugins.lang' },
-    { import = 'plugins.ai' },
-    { import = 'plugins.ui' },
+    -- { import = "lazyvim.plugins.extras.editor.snacks_explorer" },
+    -- Import any extra modules here
+    { import = 'lazyvim.plugins.extras.ai.copilot' },
+    { import = 'lazyvim.plugins.extras.ai.copilot-chat' },
+    { import = 'lazyvim.plugins.extras.coding.mini-surround' },
+    { import = 'lazyvim.plugins.extras.coding.mini-snippets' },
+    { import = 'lazyvim.plugins.extras.coding.mini-comment' },
+    { import = 'lazyvim.plugins.extras.coding.blink' },
+    { import = 'lazyvim.plugins.extras.dap.core' },
+    { import = 'lazyvim.plugins.extras.dap.nlua' },
+    { import = 'lazyvim.plugins.extras.editor.harpoon2' },
+    { import = 'lazyvim.plugins.extras.editor.mini-diff' },
+    { import = 'lazyvim.plugins.extras.editor.illuminate' },
+    { import = 'lazyvim.plugins.extras.editor.inc-rename' },
+    { import = 'lazyvim.plugins.extras.editor.leap' },
+    { import = 'lazyvim.plugins.extras.editor.mini-files' },
+    { import = 'lazyvim.plugins.extras.editor.overseer' },
+    { import = 'lazyvim.plugins.extras.editor.refactoring' },
+    { import = 'lazyvim.plugins.extras.editor.snacks_picker' },
+    { import = 'lazyvim.plugins.extras.formatting.biome' },
+    { import = 'lazyvim.plugins.extras.formatting.prettier' },
+    { import = 'lazyvim.plugins.extras.lang.json' },
+    { import = 'lazyvim.plugins.extras.lang.markdown' },
+    { import = 'lazyvim.plugins.extras.lang.typescript' },
+    { import = 'lazyvim.plugins.extras.lang.angular' },
+    { import = 'lazyvim.plugins.extras.lang.python' },
+    { import = 'lazyvim.plugins.extras.lang.git' },
+    { import = 'lazyvim.plugins.extras.lang.nix' },
+    { import = 'lazyvim.plugins.extras.lang.clangd' },
+    { import = 'lazyvim.plugins.extras.lang.toml' },
+    { import = 'lazyvim.plugins.extras.test.core' },
+    { import = 'lazyvim.plugins.extras.util.mini-hipatterns' },
+    { import = 'lazyvim.plugins.extras.util.dot' },
+    { import = 'lazyvim.plugins.extras.ui.indent-blankline' },
+
+    -- Import/override with your plugins
+    { import = 'plugins' },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
