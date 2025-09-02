@@ -30,6 +30,33 @@ return {
             },
           },
         },
+        arduino_language_server = {
+          -- Configuration for Arduino Language Server
+          cmd = {
+            'arduino-language-server',
+            '-cli',
+            '/bin/arduino-cli',
+            '-fqbn',
+            'arduino:avr:uno',
+            '-clangd',
+            'clangd',
+          },
+          filetypes = { 'ino', 'pde', 'cpp' },
+          root_dir = require('lspconfig.util').root_pattern('*.ino', '*.pde', '.git', 'platformio.ini'),
+        },
+        clangd = {
+          -- Configuration for clangd
+          cmd = {
+            'clangd',
+            '--background-index',
+            '--cross-file-rename',
+            '--completion-style=detailed',
+            '--header-insertion=never',
+          },
+          capabilities = {
+            offsetEncoding = { 'utf-16' }, -- Set offset encoding to utf-16 for clangd
+          },
+        },
       },
     },
   },
