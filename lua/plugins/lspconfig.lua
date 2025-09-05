@@ -29,14 +29,14 @@ return {
         cmd = {
           'arduino-language-server',
           '-cli',
-          '/bin/arduino-cli',
+          'arduino-cli',
           '-fqbn',
           'arduino:avr:uno',
           '-clangd',
           'clangd',
         },
         filetypes = { 'ino', 'pde', 'cpp' },
-        root_dir = require('lspconfig.util').root_pattern('*.ino', '*.pde', '.git', 'platformio.ini'),
+        root_dir = require('lspconfig.util').root_pattern('*.ino', '*.pde', '.git', '*.ini'),
       },
       clangd = {
         -- Configuration for clangd

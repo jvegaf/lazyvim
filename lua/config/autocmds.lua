@@ -60,3 +60,23 @@ autocmds('InsertLeave', {
   pattern = '*',
   command = 'set nopaste',
 })
+
+-- Avalonia XAML LSP
+-- install lsp-servers: yay -S avalonia-ls-git
+
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+  pattern = { '*.axaml' },
+  callback = function(event)
+    vim.lsp.start({
+      name = 'avalonia',
+      cmd = { 'avalonia-ls' },
+      root_dir = vim.fn.getcwd(),
+    })
+  end,
+})
+vim.filetype.add({
+  extension = {
+    axaml = 'xml',
+  },
+})
+-- set filetype xml for extension .axaml
