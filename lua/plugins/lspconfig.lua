@@ -51,6 +51,7 @@ return {
           offsetEncoding = { 'utf-16' }, -- Set offset encoding to utf-16 for clangd
         },
       },
+      docker_compose_language_service = {},
     },
   },
 }
