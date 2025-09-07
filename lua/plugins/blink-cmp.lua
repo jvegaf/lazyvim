@@ -5,6 +5,8 @@ return { -- Autocompletion
   dependencies = {
     'folke/lazydev.nvim',
     'saghen/blink.compat',
+    'MahanRahmati/blink-nerdfont.nvim',
+    'moyiz/blink-emoji.nvim',
   },
   --- @module 'blink.cmp'
   --- @type blink.cmp.Config
@@ -55,6 +57,8 @@ return { -- Autocompletion
         'avante_mentions',
         'avante_files',
         'lsp',
+        'nerdfont',
+        'emoji',
         'path',
         'snippets',
         'lazydev',
@@ -79,6 +83,32 @@ return { -- Autocompletion
           opts = {},
         },
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+        nerdfont = {
+          module = 'blink-nerdfont',
+          name = 'Nerd Fonts',
+          score_offset = 15, -- Tune by preference
+          opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+        },
+        emoji = {
+          module = 'blink-emoji',
+          name = 'Emoji',
+          score_offset = 15, -- Tune by preference
+          opts = {
+            insert = true, -- Insert emoji (default) or complete its name
+            ---@type string|table|fun():table
+            trigger = function()
+              return { ':' }
+            end,
+          },
+          -- should_show_items = function()
+          --   return vim.tbl_contains(
+          --     -- Enable emoji completion only for git commits and markdown.
+          --     -- By default, enabled for all file-types.
+          --     { 'gitcommit', 'markdown' },
+          --     vim.o.filetype
+          --   )
+          -- end,
+        },
       },
     },
 
