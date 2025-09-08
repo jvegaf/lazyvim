@@ -4,9 +4,9 @@ return { -- Autocompletion
   version = '1.*',
   dependencies = {
     'folke/lazydev.nvim',
-    'saghen/blink.compat',
     'MahanRahmati/blink-nerdfont.nvim',
     'moyiz/blink-emoji.nvim',
+    'Kaiser-Yang/blink-cmp-avante',
   },
   --- @module 'blink.cmp'
   --- @type blink.cmp.Config
@@ -53,9 +53,7 @@ return { -- Autocompletion
 
     sources = {
       default = {
-        'avante_commands',
-        'avante_mentions',
-        'avante_files',
+        'avante',
         'lsp',
         'nerdfont',
         'emoji',
@@ -64,23 +62,12 @@ return { -- Autocompletion
         'lazydev',
       },
       providers = {
-        avante_commands = {
-          name = 'avante_commands',
-          module = 'blink.compat.source',
-          score_offset = 90,
-          opts = {},
-        },
-        avante_files = {
-          name = 'avante_files',
-          module = 'blink.compat.source',
-          score_offset = 100,
-          opts = {},
-        },
-        avante_mentions = {
-          name = 'avante_mentions',
-          module = 'blink.compat.source',
-          score_offset = 1000,
-          opts = {},
+        avante = {
+          module = 'blink-cmp-avante',
+          name = 'Avante',
+          opts = {
+            -- options for blink-cmp-avante
+          },
         },
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
         nerdfont = {
