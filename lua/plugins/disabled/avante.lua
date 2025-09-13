@@ -13,7 +13,7 @@ return {
     -- this file can contain specific instructions for your project
     instructions_file = 'avante.md',
     -- for example
-    provider = 'copilot',
+    provider = 'ollama',
   },
   dependencies = {
     'nvim-lua/plenary.nvim',
