@@ -13,7 +13,13 @@ return {
     vim.o.timeout = true
     vim.o.timeoutlen = 300 -- Set the timeout length to 300 milliseconds
   end,
-
+  config = function()
+    local wk = require('which-key')
+    wk.add({
+      { '<leader>a', group = 'AI' }, -- group
+      { '<leader>o', group = 'OpenCode' }, -- group
+    })
+  end,
   keys = {
     {
       -- Keybinding to show which-key popup
@@ -21,11 +27,6 @@ return {
       function()
         require('which-key').show({ global = false }) -- Show the which-key popup for local keybindings
       end,
-    },
-    {
-      -- Define a group for Obsidian-related commands
-      '<leader>o',
-      group = 'OpenCode',
     },
   },
 }

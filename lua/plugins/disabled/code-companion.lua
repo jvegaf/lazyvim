@@ -34,6 +34,13 @@ return {
       ollama = function()
         return require('codecompanion.adapters').extend('openai_compatible', {
           env = {
+            url = 'http://127.0.0.1:11434',
+          },
+        })
+      end,
+      lmstudio = function()
+        return require('codecompanion.adapters').extend('openai_compatible', {
+          env = {
             url = 'http://127.0.0.1:1234',
           },
         })
