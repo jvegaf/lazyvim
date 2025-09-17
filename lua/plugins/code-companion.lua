@@ -49,6 +49,11 @@ return {
             env = {
               url = 'http://127.0.0.1:1234',
             },
+            schema = {
+              model = {
+                defaul = 'qwen/qwen3-1.7b',
+              },
+            },
           })
         end,
         copilot_4o = function()
