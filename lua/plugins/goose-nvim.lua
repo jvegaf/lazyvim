@@ -59,7 +59,9 @@ return {
     }
     --]]
       ollama = {
+        'qwen3:1.7b',
         'qwen3:4b',
+        'qwen2.5-coder:latetst',
       },
     },
   },
