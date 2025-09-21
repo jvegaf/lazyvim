@@ -42,6 +42,11 @@ return {
             env = {
               url = 'http://127.0.0.1:11434',
             },
+            schema = {
+              model = {
+                default = 'deepseek-coder:6.7b',
+              },
+            },
           })
         end,
         lmstudio = function()
@@ -51,7 +56,7 @@ return {
             },
             schema = {
               model = {
-                defaul = 'qwen/qwen3-1.7b',
+                default = 'qwen/qwen3-1.7b',
               },
             },
           })
