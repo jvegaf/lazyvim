@@ -4,7 +4,7 @@ return {
     dependencies = {
       { 'nvim-lua/plenary.nvim', version = false },
       'franco-ruggeri/codecompanion-spinner.nvim',
-      { 'theStrangeAdventurer/ai_memory.nvim' },
+      -- { 'theStrangeAdventurer/ai_memory.nvim' },
     },
     init = function()
       vim.cmd([[cab cc CodeCompanion]])
@@ -201,9 +201,9 @@ return {
       },
       extensions = {
         spinner = {},
-        ai_memory = {
-          callback = 'ai_memory.extensions.codecompanion',
-        },
+        -- ai_memory = {
+        --   callback = 'ai_memory.extensions.codecompanion',
+        -- },
       },
     },
   },
