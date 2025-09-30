@@ -1,5 +1,4 @@
 return {
-  "junegunn/vim-easy-align",
-  event = "BufReadPre",
-  keys = { { "ga", "<Plug>(EasyAlign)", mode = { "n", "x" }, desc = "EasyAlign" } },
+  'nvim-mini/mini.align',
+  version = '*',
 }

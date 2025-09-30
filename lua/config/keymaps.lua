@@ -37,7 +37,7 @@ keymap.set("n", "<localleader>qc", ":cclose<CR>") -- close quickfix list
 
 -- LSP keymaps
 -- rename symbol
-keymap.set("n", "<localleader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", NS)
+keymap.set("n", "<localleader>rl", "<cmd>lua vim.lsp.buf.rename()<CR>", NS)
 
 --diagnotic keymaps
 keymap.set("n", "gk", function() vim.diagnostic.jump({count= -1,float = true}) end, { desc = "Previous Diagnostic" })

@@ -37,35 +37,11 @@ return {
     config = true,
     opts = {
       adapters = {
-        ollama = function()
-          return require('codecompanion.adapters').extend('openai_compatible', {
-            env = {
-              url = 'http://127.0.0.1:11434',
-            },
-            schema = {
-              model = {
-                default = 'deepseek-coder:6.7b',
-              },
-            },
-          })
-        end,
-        lmstudio = function()
-          return require('codecompanion.adapters').extend('openai_compatible', {
-            env = {
-              url = 'http://127.0.0.1:1234',
-            },
-            schema = {
-              model = {
-                default = 'qwen/qwen3-1.7b',
-              },
-            },
-          })
-        end,
-        copilot_4o = function()
+        copilot_5o = function()
           return require('codecompanion.adapters').extend('copilot', {
             schema = {
               model = {
-                default = 'gpt-4o',
+                default = 'gpt-5',
               },
             },
           })
@@ -75,6 +51,15 @@ return {
             schema = {
               model = {
                 default = 'gpt-4.1',
+              },
+            },
+          })
+        end,
+        copilot_sonnet_4 = function()
+          return require('codecompanion.adapters').extend('copilot', {
+            schema = {
+              model = {
+                default = 'claude-sonnet-4',
               },
             },
           })
@@ -145,7 +130,7 @@ return {
             },
             -- Add further custom keymaps here
           },
-          adapter = 'ollama',
+          adapter = 'copilot',
           roles = {
             ---The header name for the LLM's messages
             ---@type string|fun(adapter: CodeCompanion.Adapter): string
