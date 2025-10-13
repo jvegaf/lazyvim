@@ -32,6 +32,10 @@ return {
     },
     build = 'make tiktoken', -- MacOS/Linux only
     opts = {
+      show_help = 'no',
+      prompts = prompts,
+      model = 'gpt-4.1', -- GPT model to use, see ':CopilotChatModels' for available models
+
       window = {
         layout = 'vertical', -- 'float' | 'vertical' | 'horizontal'
         position = 'right', -- only for vertical
