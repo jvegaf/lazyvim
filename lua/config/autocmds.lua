@@ -24,6 +24,10 @@ autocmds({ 'BufRead', 'BufNewFile' }, {
   command = 'set filetype=css',
 })
 
+autocmds({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*.tpl',
+  command = 'set filetype=html',
+})
 -- autocmds("LspAttach", {
 --   group = vim.api.nvim_create_augroup("lsp_attach_auto_diag", { clear = true }),
 --   callback = function(args)
