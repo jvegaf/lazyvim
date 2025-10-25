@@ -11,11 +11,13 @@ return {
   {
     'stevanmilic/nvim-lspimport',
     ft = { 'python' },
+    enabled = false,
     event = 'VeryLazy',
     keys = { { '<leader>I', "<cmd>lua require('lspimport').import()<cr>" } },
   },
   {
     'roobert/f-string-toggle.nvim',
+    enabled = false,
     event = 'VeryLazy',
     opts = {
       key_binding = '<localleader>f',
@@ -32,6 +34,7 @@ return {
   },
   {
     'SWiegandt/autoself.nvim',
+    enabled = false,
     ft = { 'python' },
     config = true,
   },
