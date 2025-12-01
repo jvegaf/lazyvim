@@ -1,6 +1,6 @@
 return {
   {
-    enabled = false,
+    -- enabled = false,
     event = 'VeryLazy',
     'jim-at-jibba/micropython.nvim',
     dependencies = { 'akinsho/toggleterm.nvim', 'stevearc/dressing.nvim' },

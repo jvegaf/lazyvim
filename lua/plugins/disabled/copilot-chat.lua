@@ -34,7 +34,7 @@ return {
     opts = {
       show_help = 'no',
       prompts = prompts,
-      model = 'gpt-4.1', -- GPT model to use, see ':CopilotChatModels' for available models
+      model = 'gpt-5-mini', -- GPT model to use, see ':CopilotChatModels' for available models
 
       window = {
         layout = 'vertical', -- 'float' | 'vertical' | 'horizontal'
