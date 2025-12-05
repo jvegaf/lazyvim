@@ -18,6 +18,7 @@ return {
     wk.add({
       { '<leader>a', group = 'AI' }, -- group
       { '<leader>o', group = 'OpenCode' }, -- group
+      { '<leader>k', group = 'Sidekick [AI]' }, -- group
     })
   end,
   keys = {
