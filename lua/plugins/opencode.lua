@@ -10,6 +10,7 @@ return {
       local vocal = require('vocal')
 
       -- 1. Configuración de Vocal para usar tu whisper-cli optimizado
+      -- instalar antes las dependencias con sudo pacman -S sox python-openai-whisper
       vocal.setup({
         local_model = {
           model = 'base', -- Model size: tiny, base, small, medium, large
