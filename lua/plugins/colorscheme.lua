@@ -9,7 +9,6 @@ return {
         --   transparent = true,
         -- },
       })
-      vim.cmd.colorscheme('astrotheme')
     end,
   },
   {
@@ -109,7 +108,7 @@ return {
     priority = 1000,
     config = function()
       require('ayu').setup({
-        -- mirage = true,
+        mirage = false,
         -- overrides = {
         --   Normal = { bg = 'None' },
         --   NormalFloat = { bg = 'none' },
@@ -122,8 +121,9 @@ return {
         --   VertSplit = { bg = 'None' },
         -- },
       })
-      -- require('ayu').colorscheme()
-      -- vim.cmd('colorscheme ayu')
+      vim.o.background = 'dark'
+      require('ayu').colorscheme()
+      vim.cmd('colorscheme ayu')
     end,
   },
 }

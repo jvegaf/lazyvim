@@ -43,6 +43,7 @@ return {
         cmd = {
           'clangd',
           '--background-index',
+          '-j=12',
           '--cross-file-rename',
           '--completion-style=detailed',
           '--header-insertion=never',
