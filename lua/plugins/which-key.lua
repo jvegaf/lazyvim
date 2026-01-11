@@ -15,10 +15,15 @@ return {
   end,
   config = function()
     local wk = require('which-key')
+    wk.setup({
+      preset = 'modern',
+    })
+
     wk.add({
       { '<leader>a', group = 'AI' }, -- group
       { '<leader>o', group = 'OpenCode' }, -- group
       { '<leader>k', group = 'Sidekick [AI]' }, -- group
+      { '<leader>gh', group = 'Gitsigns' }, -- group
     })
   end,
   keys = {

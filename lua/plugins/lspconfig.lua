@@ -7,6 +7,9 @@ return {
   opts = {
     inlay_hints = { enabled = false }, -- Disable inlay hints
     servers = {
+      cssls = {},
+      css_variables = {},
+      cssmodules_ls = {},
       -- angularls = {
       --   -- Configuration for Angular Language Server
       --   root_dir = function(fname)

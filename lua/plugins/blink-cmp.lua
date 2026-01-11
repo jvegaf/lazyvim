@@ -6,7 +6,7 @@ return {
     'MahanRahmati/blink-nerdfont.nvim',
     'moyiz/blink-emoji.nvim',
     'rafamadriz/friendly-snippets',
-    'giuxtaposition/blink-cmp-copilot',
+    'jdrupal-dev/css-vars.nvim',
   },
 
   -- use a release tag to download pre-built binaries
@@ -41,20 +41,14 @@ return {
     sources = {
       default = {
         'lsp',
+        'css_vars',
         'nerdfont',
         'emoji',
         'path',
         'snippets',
         'lazydev',
-        'copilot',
       },
       providers = {
-        copilot = {
-          name = 'copilot',
-          module = 'blink-cmp-copilot',
-          score_offset = 100,
-          async = true,
-        },
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
         nerdfont = {
           module = 'blink-nerdfont',
@@ -82,13 +76,21 @@ return {
           --   )
           -- end,
         },
+        css_vars = {
+          name = 'css-vars',
+          module = 'css-vars.blink',
+          opts = {
+            -- WARNING: The search is not optimized to look for variables in JS files.
+            -- If you change the search_extensions you might get false positives and weird completion results.
+            search_extensions = { '.js', '.ts', '.jsx', '.tsx' },
+          },
+        },
       },
     },
     appearance = {
       nerd_font_variant = 'mono',
       -- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
       kind_icons = {
-        Copilot = '',
         Text = '󰉿',
         Method = '󰊕',
         Function = '󰊕',

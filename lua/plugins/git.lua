@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 return {
   {
     'dinhhuy258/git.nvim',
@@ -14,6 +13,7 @@ return {
   },
   {
     'lewis6991/gitsigns.nvim',
+    enabled = true,
     event = 'BufReadPre',
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
