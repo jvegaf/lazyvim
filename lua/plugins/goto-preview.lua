@@ -4,6 +4,9 @@ return {
   -- Description: Provides preview functionality for definitions, declarations, implementations, type definitions, and references.
   'rmagatti/goto-preview',
   event = 'BufEnter', -- Load the plugin when a buffer is entered
+  dependencies = {
+    'rmagatti/logger.nvim',
+  },
   config = true, -- Enable default configuration
   keys = {
     {
