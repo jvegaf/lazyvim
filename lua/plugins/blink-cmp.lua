@@ -9,13 +9,57 @@ return {
     'folke/lazydev.nvim',
     'MahanRahmati/blink-nerdfont.nvim',
     'moyiz/blink-emoji.nvim',
-    'rafamadriz/friendly-snippets',
     'jdrupal-dev/css-vars.nvim',
     {
       'saghen/blink.compat',
       lazy = true,
       opts = {},
       version = '2.*',
+    },
+    {
+      'L3MON4D3/LuaSnip',
+      version = '2.*',
+      build = (function()
+        -- Build Step is needed for regex support in snippets.
+        -- This step is not supported in many windows environments.
+        -- Remove the below condition to re-enable on windows.
+        if vim.fn.has('win32') == 1 or vim.fn.executable('make') == 0 then
+          return
+        end
+        return 'make install_jsregexp'
+      end)(),
+      dependencies = {
+        -- `friendly-snippets` contains a variety of premade snippets.
+        --    See the README about individual language/framework/plugin snippets:
+        --    https://github.com/rafamadriz/friendly-snippets
+        {
+          'rafamadriz/friendly-snippets',
+          config = function()
+            require('luasnip.loaders.from_vscode').lazy_load()
+            require('luasnip.loaders.from_vscode').load({ paths = { './snippets' } })
+          end,
+          keys = {
+            -- stylua: ignore
+            { '<leader>sz', function() require('luasnip.loaders').edit_snippet_files() end, desc = 'Edit snippets' },
+          },
+          dependencies = {
+            {
+              'telescope.nvim',
+              dependencies = {
+                'benfowler/telescope-luasnip.nvim',
+                config = function()
+                  require('telescope').load_extension('luasnip')
+                end,
+              },
+              keys = {
+                -- stylua: ignore
+                { '<leader>fs', function() require('telescope').extensions.luasnip.luasnip({}) end, desc = 'Search snippets' },
+              },
+            },
+          },
+        },
+      },
+      opts = {},
     },
   },
   event = { 'InsertEnter', 'CmdlineEnter' },
@@ -42,16 +86,17 @@ return {
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
     keymap = { preset = 'enter' },
-    appearance = {
-      -- sets the fallback highlight groups to nvim-cmp's highlight groups
-      -- useful for when your theme doesn't support blink.cmp
-      -- will be removed in a future release, assuming themes add support
-      use_nvim_cmp_as_default = false,
-      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- adjusts spacing to ensure icons are aligned
-      nerd_font_variant = 'mono',
-    },
+    -- appearance = {
+    -- sets the fallback highlight groups to nvim-cmp's highlight groups
+    -- useful for when your theme doesn't support blink.cmp
+    -- will be removed in a future release, assuming themes add support
+    -- use_nvim_cmp_as_default = false,
+    -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+    -- adjusts spacing to ensure icons are aligned
+    -- nerd_font_variant = 'mono',
+    -- },
     -- (Default) Only show the documentation popup when manually triggered
+    snippets = { preset = 'luasnip' },
     completion = {
       accept = {
         -- experimental auto-brackets support
