@@ -22,6 +22,7 @@ return {
     wk.add({
       { '<leader>a', group = 'AI' }, -- group
       { '<leader>o', group = 'OpenCode' }, -- group
+      { '<leader>op', group = 'Prompts' }, -- group
       { '<leader>k', group = 'Sidekick [AI]' }, -- group
       { '<leader>gh', group = 'Gitsigns' }, -- group
     })
