@@ -88,12 +88,7 @@ return {
       },
       providers = {
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-        snippets = {
-          opts = {
-            friendly_snippets = true,
-          },
-        },
-
+        snippets = { score_offset = 200 },
         nerdfont = {
           module = 'blink-nerdfont',
           name = 'Nerd Fonts',
