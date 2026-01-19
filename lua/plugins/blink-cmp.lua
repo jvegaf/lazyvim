@@ -1,193 +1,182 @@
+local icons = require('utils.icons')
 return {
-  'saghen/blink.cmp',
-  opts_extend = {
-    'sources.completion.enabled_providers',
-    'sources.compat',
-    'sources.default',
-  },
-  dependencies = {
-    'rafamadriz/friendly-snippets',
-    'folke/lazydev.nvim',
-    'MahanRahmati/blink-nerdfont.nvim',
-    'moyiz/blink-emoji.nvim',
-    'jdrupal-dev/css-vars.nvim',
-    {
-      'saghen/blink.compat',
-      lazy = true,
-      opts = {},
-      version = '2.*',
-    },
-  },
-  event = { 'InsertEnter', 'CmdlineEnter' },
-  -- use a release tag to download pre-built binaries
-  version = '1.*',
-  -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  -- build = 'cargo build --release',
-  -- If you use nix, you can build from source using latest nightly rust with:
-  -- build = 'nix run .#build-plugin',
-
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
-  opts = {
-    -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-    -- 'super-tab' for mappings similar to vscode (tab to accept)
-    -- 'enter' for enter to accept
-    -- 'none' for no mappings
-    --
-    -- All presets have the following mappings:
-    -- C-space: Open menu or open docs if already open
-    -- C-n/C-p or Up/Down: Select next/previous item
-    -- C-e: Hide menu
-    -- C-k: Toggle signature help (if signature.enabled = true)
-    --
-    -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'enter' },
-    -- appearance = {
-    -- sets the fallback highlight groups to nvim-cmp's highlight groups
-    -- useful for when your theme doesn't support blink.cmp
-    -- will be removed in a future release, assuming themes add support
-    -- use_nvim_cmp_as_default = false,
-    -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-    -- adjusts spacing to ensure icons are aligned
-    -- nerd_font_variant = 'mono',
-    -- },
-    -- (Default) Only show the documentation popup when manually triggered
-    completion = {
-      accept = {
-        -- experimental auto-brackets support
-        auto_brackets = {
-          enabled = true,
-        },
+  {
+    'saghen/blink.cmp',
+    lazy = false,
+    version = '1.*',
+    opts = {
+      appearance = {
+        kind_icons = icons.trouble.kinds,
       },
-      menu = {
-        draw = {
-          treesitter = { 'lsp' },
-        },
-      },
-      documentation = {
-        auto_show = true,
-        auto_show_delay_ms = 200,
-      },
-      ghost_text = {
-        enabled = vim.g.ai_cmp,
-      },
-    },
-
-    -- Default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, due to `opts_extend`
-    sources = {
-      default = {
-        'lsp',
-        'snippets',
-        'path',
-        'buffer',
-        'css_vars',
-        'nerdfont',
-        'emoji',
-        'lazydev',
-      },
-      providers = {
-        lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-        snippets = { score_offset = 200 },
-        nerdfont = {
-          module = 'blink-nerdfont',
-          name = 'Nerd Fonts',
-          score_offset = 15, -- Tune by preference
-          opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
-        },
-        emoji = {
-          module = 'blink-emoji',
-          name = 'Emoji',
-          score_offset = 15, -- Tune by preference
-          opts = {
-            insert = true, -- Insert emoji (default) or complete its name
-            ---@type string|table|fun():table
-            trigger = function()
-              return { ':' }
-            end,
-          },
-          -- should_show_items = function()
-          --   return vim.tbl_contains(
-          --     -- Enable emoji completion only for git commits and markdown.
-          --     -- By default, enabled for all file-types.
-          --     { 'gitcommit', 'markdown' },
-          --     vim.o.filetype
-          --   )
-          -- end,
-        },
-        css_vars = {
-          name = 'css-vars',
-          module = 'css-vars.blink',
-          opts = {
-            -- WARNING: The search is not optimized to look for variables in JS files.
-            -- If you change the search_extensions you might get false positives and weird completion results.
-            search_extensions = { '.js', '.ts', '.jsx', '.tsx' },
-          },
-        },
-      },
-    },
-    appearance = {
-      nerd_font_variant = 'mono',
-      -- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
-      kind_icons = {
-        Text = '󰉿',
-        Method = '󰊕',
-        Function = '󰊕',
-        Constructor = '󰒓',
-
-        Field = '󰜢',
-        Variable = '󰆦',
-        Property = '󰖷',
-
-        Class = '󱡠',
-        Interface = '󱡠',
-        Struct = '󱡠',
-        Module = '󰅩',
-
-        Unit = '󰪚',
-        Value = '󰦨',
-        Enum = '󰦨',
-        EnumMember = '󰦨',
-
-        Keyword = '󰻾',
-        Constant = '󰏿',
-
-        Snippet = '󱄽',
-        Color = '󰏘',
-        File = '󰈔',
-        Reference = '󰬲',
-        Folder = '󰉋',
-        Event = '󱐋',
-        Operator = '󰪚',
-        TypeParameter = '󰬛',
-      },
-
-      -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
-      -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
-      -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
-      --
-      -- See the fuzzy documentation for more information
-    },
-    fuzzy = { implementation = 'prefer_rust_with_warning' },
-
-    cmdline = {
-      enabled = true,
       keymap = {
-        preset = 'cmdline',
-        ['<Right>'] = false,
-        ['<Left>'] = false,
+        preset = 'none',
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<Tab>'] = { 'select_next', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'fallback' },
+        ['<Up>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<Down>'] = { 'scroll_documentation_down', 'fallback' },
+        ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+      },
+      cmdline = {
+        completion = {
+          list = { selection = { preselect = false } },
+          menu = { auto_show = true },
+        },
       },
       completion = {
-        list = { selection = { preselect = false } },
         menu = {
-          auto_show = function(ctx)
-            return vim.fn.getcmdtype() == ':'
-          end,
+          border = 'rounded',
+          direction_priority = { 'n', 's' },
+          draw = { treesitter = { 'lsp' } },
         },
-        ghost_text = { enabled = true },
+        documentation = {
+          auto_show = true,
+          window = { border = 'rounded' },
+        },
+        trigger = {
+          show_on_keyword = true,
+          show_on_accept_on_trigger_character = true,
+          show_on_insert_on_trigger_character = true,
+          show_on_trigger_character = true,
+          show_on_blocked_trigger_characters = { ' ', '\n', '\t' },
+        },
+        ghost_text = { enabled = false },
+        list = { selection = { preselect = false } },
+      },
+      fuzzy = {
+        implementation = 'prefer_rust',
+        sorts = {
+          'exact',
+          'score',
+          'sort_text',
+        },
+      },
+      signature = {
+        enabled = true,
+        trigger = { show_on_insert = true },
+        window = {
+          border = 'rounded',
+          direction_priority = { 's', 'n' },
+          show_documentation = true,
+        },
+      },
+      snippets = { preset = 'luasnip' },
+      sources = {
+        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+        providers = {
+          buffer = {
+            name = 'Buffer',
+            enabled = true,
+            max_items = 3,
+            module = 'blink.cmp.sources.buffer',
+            min_keyword_length = 2,
+            score_offset = 65, -- the higher the number, the higher the priority
+            transform_items = function(a, items)
+              local keyword = a.get_keyword()
+              local correct, case
+              if keyword:match('^%l') then
+                correct = '^%u%l+$'
+                case = string.lower
+              elseif keyword:match('^%u') then
+                correct = '^%l+$'
+                case = string.upper
+              else
+                return items
+              end
+
+              -- avoid duplicates from the corrections
+              local seen = {}
+              local out = {}
+              for _, item in ipairs(items) do
+                local raw = item.insertText
+                if raw and raw:match(correct) then
+                  local text = case(raw:sub(1, 1)) .. raw:sub(2)
+                  item.insertText = text
+                  item.label = text
+                end
+                if not seen[item.insertText] then
+                  seen[item.insertText] = true
+                  table.insert(out, item)
+                end
+              end
+              return out
+            end,
+          },
+          path = {
+            name = 'Path',
+            module = 'blink.cmp.sources.path',
+            score_offset = 70,
+            min_keyword_length = 2,
+            fallbacks = { 'snippets', 'buffer' },
+            opts = {
+              trailing_slash = false,
+              label_trailing_slash = true,
+              get_cwd = function(context)
+                return vim.fn.expand(('#%d:p:h'):format(context.bufnr))
+              end,
+              show_hidden_files_by_default = true,
+            },
+          },
+          snippets = {
+            name = 'Snippets',
+            module = 'blink.cmp.sources.snippets',
+            min_keyword_length = 2,
+            score_offset = 85,
+          },
+          dadbod = {
+            name = 'Dadbod',
+            module = 'vim_dadbod_completion.blink',
+            min_keyword_length = 2,
+            score_offset = 80,
+          },
+          lsp = {
+            name = 'lsp',
+            enabled = true,
+            module = 'blink.cmp.sources.lsp',
+            score_offset = 95,
+          },
+          lazydev = {
+            name = 'LazyDev',
+            module = 'lazydev.integrations.blink',
+            score_offset = 100,
+          },
+        },
       },
     },
+    opts_extend = { 'sources.default' },
+  },
+  {
+    'L3MON4D3/LuaSnip',
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    event = 'InsertEnter',
+    postinstall = 'make install_jsregexp',
+    config = function()
+      local luasnip = require('luasnip')
+      luasnip.setup({
+        history = true,
+        updateevents = 'TextChanged,TextChangedI',
+        enable_autosnippets = true,
+      })
+      -- add vscode exported completions
+      require('luasnip.loaders.from_vscode').lazy_load()
+      require('luasnip.loaders.from_vscode').lazy_load('./snippets')
+      local r = require('utils.remaps')
+
+      r.map({ 'i', 's' }, '<c-n>', function()
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        end
+      end, 'Expand current snippet or jump to next', { silent = true })
+
+      r.map({ 'i', 's' }, '<c-p>', function()
+        if luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        end
+      end, 'Go to previous snippet', { silent = true })
+    end,
+  },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
   },
 }
-
--- vim: ts=2 sts=2 sw=2 et
