@@ -7,8 +7,8 @@ return {
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     opts = {
-      model = 'claude-opus-4.5', -- AI model to use
-      auto_insert_mode = true, -- Enter insert mode when opening
+      model = 'gpt-5', -- AI model to use
+      auto_insert_mode = false, -- Enter insert mode when opening
     },
   },
 }
