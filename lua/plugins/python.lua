@@ -13,7 +13,7 @@ return {
     ft = { 'python' },
     enabled = false,
     event = 'VeryLazy',
-    keys = { { '<leader>I', "<cmd>lua require('lspimport').import()<cr>" } },
+    keys = { { '<leader>I', "<cmd>lua require('lspimport').import()<cr>", desc = 'Python Import' } },
   },
   {
     'roobert/f-string-toggle.nvim',
@@ -29,7 +29,7 @@ return {
     ft = { 'python' },
     opts = {},
     keys = {
-      { '<leader>cw', '<cmd>WhichPy select<cr>' },
+      { '<leader>cp', '<cmd>WhichPy select<cr>', desc = 'WhichPy: Select Python interpreter' },
     },
   },
   {

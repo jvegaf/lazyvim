@@ -11,6 +11,7 @@ return {
     },
     indent = { enabled = true },
     input = { enabled = true },
+    lazygit = {},
     notifier = {
       enabled = true,
       timeout = 3000,
@@ -131,6 +132,13 @@ return {
         Snacks.picker.git_branches()
       end,
       desc = 'Git Branches',
+    },
+    {
+      '<leader>gg',
+      function()
+        Snacks.lazygit.open()
+      end,
+      desc = 'Lazygit',
     },
     {
       '<leader>gl',

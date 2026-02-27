@@ -24,7 +24,7 @@ return {
       { '<leader>o', group = 'OpenCode' }, -- group
       { '<leader>op', group = 'Prompts' }, -- group
       { '<leader>k', group = 'Sidekick [AI]' }, -- group
-      { '<leader>gh', group = 'Gitsigns' }, -- group
+      { '<localleader>g', group = 'Gitsigns' }, -- group
     })
   end,
   keys = {

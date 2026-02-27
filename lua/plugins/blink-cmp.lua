@@ -4,6 +4,7 @@ return {
     'saghen/blink.cmp',
     lazy = false,
     version = '1.*',
+    dependencies = { 'rafamadriz/friendly-snippets' },
     opts = {
       appearance = {
         kind_icons = icons.trouble.kinds,
@@ -16,6 +17,8 @@ return {
         ['<Up>'] = { 'scroll_documentation_up', 'fallback' },
         ['<Down>'] = { 'scroll_documentation_down', 'fallback' },
         ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+        -- stylua: ignore
+        ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
       },
       cmdline = {
         completion = {
@@ -60,7 +63,6 @@ return {
           show_documentation = true,
         },
       },
-      snippets = { preset = 'luasnip' },
       sources = {
         default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
         providers = {
@@ -145,36 +147,36 @@ return {
     },
     opts_extend = { 'sources.default' },
   },
-  {
-    'L3MON4D3/LuaSnip',
-    dependencies = { 'rafamadriz/friendly-snippets' },
-    event = 'InsertEnter',
-    postinstall = 'make install_jsregexp',
-    config = function()
-      local luasnip = require('luasnip')
-      luasnip.setup({
-        history = true,
-        updateevents = 'TextChanged,TextChangedI',
-        enable_autosnippets = true,
-      })
-      -- add vscode exported completions
-      require('luasnip.loaders.from_vscode').lazy_load()
-      require('luasnip.loaders.from_vscode').lazy_load('./snippets')
-      local r = require('utils.remaps')
-
-      r.map({ 'i', 's' }, '<c-n>', function()
-        if luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
-        end
-      end, 'Expand current snippet or jump to next', { silent = true })
-
-      r.map({ 'i', 's' }, '<c-p>', function()
-        if luasnip.jumpable(-1) then
-          luasnip.jump(-1)
-        end
-      end, 'Go to previous snippet', { silent = true })
-    end,
-  },
+  -- {
+  --   'L3MON4D3/LuaSnip',
+  --   dependencies = { 'rafamadriz/friendly-snippets' },
+  --   event = 'InsertEnter',
+  --   postinstall = 'make install_jsregexp',
+  --   config = function()
+  --     local luasnip = require('luasnip')
+  --     luasnip.setup({
+  --       history = true,
+  --       updateevents = 'TextChanged,TextChangedI',
+  --       enable_autosnippets = true,
+  --     })
+  --     -- add vscode exported completions
+  --     require('luasnip.loaders.from_vscode').lazy_load()
+  --     require('luasnip.loaders.from_vscode').lazy_load('./snippets')
+  --     local r = require('utils.remaps')
+  --
+  --     r.map({ 'i', 's' }, '<c-n>', function()
+  --       if luasnip.expand_or_jumpable() then
+  --         luasnip.expand_or_jump()
+  --       end
+  --     end, 'Expand current snippet or jump to next', { silent = true })
+  --
+  --     r.map({ 'i', 's' }, '<c-p>', function()
+  --       if luasnip.jumpable(-1) then
+  --         luasnip.jump(-1)
+  --       end
+  --     end, 'Go to previous snippet', { silent = true })
+  --   end,
+  -- },
   {
     'folke/lazydev.nvim',
     ft = 'lua',

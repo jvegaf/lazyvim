@@ -1,46 +1,33 @@
 return {
-  'anurag3301/nvim-platformio.lua',
-  -- cmd = { 'Pioinit', 'Piorun', 'Piocmdh', 'Piocmdf', 'Piolib', 'Piomon', 'Piodebug', 'Piodb' },
+  {
+    'anurag3301/nvim-platformio.lua',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'akinsho/toggleterm.nvim',
+    },
+    config = function()
+      require('platformio').setup({})
 
-  -- optional: cond used to enable/disable platformio
-  -- based on existance of platformio.ini file and .pio folder in cwd.
-  -- You can enable platformio plugin, using :Pioinit command
-  cond = function()
-    -- local platformioRootDir = vim.fs.root(vim.fn.getcwd(), { 'platformio.ini' }) -- cwd and parents
-    local platformioRootDir = (vim.fn.filereadable('platformio.ini') == 1) and vim.fn.getcwd() or nil
-    if platformioRootDir and vim.fs.find('.pio', { path = platformioRootDir, type = 'directory' })[1] then
-      -- if platformio.ini file and .pio folder exist in cwd, enable plugin to install plugin (if not istalled) and load it.
-      vim.g.platformioRootDir = platformioRootDir
-    elseif (vim.uv or vim.loop).fs_stat(vim.fn.stdpath('data') .. '/lazy/nvim-platformio.lua') == nil then
-      -- if nvim-platformio not installed, enable plugin to install it first time
-      vim.g.platformioRootDir = vim.fn.getcwd()
-    else                                                     -- if nvim-platformio.lua installed but disabled, create Pioinit command
-      vim.api.nvim_create_user_command('Pioinit', function() --available only if no platformio.ini and .pio in cwd
-        vim.api.nvim_create_autocmd('User', {
-          pattern = { 'LazyRestore', 'LazyLoad' },
-          once = true,
-          callback = function(args)
-            if args.match == 'LazyRestore' then
-              require('lazy').load({ plugins = { 'nvim-platformio.lua' } })
-            elseif args.match == 'LazyLoad' then
-              vim.notify('PlatformIO loaded', vim.log.levels.INFO, { title = 'PlatformIO' })
-              vim.cmd('Pioinit')
-            end
-          end,
-        })
-        vim.g.platformioRootDir = vim.fn.getcwd()
-        require('lazy').restore({ plguins = { 'nvim-platformio.lua' }, show = false })
-      end, {})
-    end
-    return vim.g.platformioRootDir ~= nil
-  end,
+      vim.api.nvim_create_user_command('PioInit', "TermExec cmd='pio project init'", {})
+      vim.api.nvim_create_user_command('PioBuild', "TermExec cmd='pio run'", {})
+      vim.api.nvim_create_user_command('PioUpload', "TermExec cmd='pio run -t upload'", {})
+      vim.api.nvim_create_user_command('PioUploadMonitor', "TermExec cmd='pio run -t upload -t monitor'", {})
+      vim.api.nvim_create_user_command('PioMonitor', "TermExec cmd='pio device monitor'", {})
+      vim.api.nvim_create_user_command('PioLsp', "TermExec cmd='pio run -t compiledb'", {})
+      vim.api.nvim_create_user_command('PioClean', "TermExec cmd='pio run -t clean'", {})
+      vim.api.nvim_create_user_command('PioUpdate', "TermExec cmd='pio pkg update'", {})
 
-  -- Dependencies are lazy-loaded by default unless specified otherwise.
-  dependencies = {
-    { 'akinsho/toggleterm.nvim' },
-    { 'nvim-telescope/telescope.nvim' },
-    { 'nvim-telescope/telescope-ui-select.nvim' },
-    { 'nvim-lua/plenary.nvim' },
-    { 'folke/which-key.nvim' },
+      local opts = { noremap = true, silent = true }
+
+      vim.keymap.set('n', '<leader>pb', ':PioBuild<CR>', { desc = 'PlatformIO Build', unpack(opts) })
+      vim.keymap.set('n', '<leader>pu', ':PioUpload<CR>', { desc = 'PlatformIO Upload', unpack(opts) })
+      vim.keymap.set('n', '<leader>pa', ':PioUploadMonitor<CR>', { desc = 'PlatformIO Upload & Monitor', unpack(opts) })
+      vim.keymap.set('n', '<leader>pm', ':PioMonitor<CR>', { desc = 'PlatformIO Monitor', unpack(opts) })
+
+      vim.keymap.set('n', '<leader>pi', ':PioInit<CR>', { desc = 'PlatformIO Init', unpack(opts) })
+      vim.keymap.set('n', '<leader>pl', ':PioLsp<CR>', { desc = 'PlatformIO Update LSP (Fix Red Lines)', unpack(opts) })
+      vim.keymap.set('n', '<leader>pc', ':PioClean<CR>', { desc = 'PlatformIO Clean Project', unpack(opts) })
+    end,
   },
 }

@@ -1,19 +1,19 @@
 return {
-  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+  { 'nvim-neo-tree/neo-tree.nvim', enabled = false },
   {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    version = "*",
-    event = "VimEnter",
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    'nvim-tree/nvim-tree.lua',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    version = '*',
+    event = 'VimEnter',
+    cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
     keys = {
-      { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree Toggle" },
+      { '<leader>e', '<cmd>NvimTreeToggle<cr>', desc = 'NvimTree Toggle' },
       -- { "<leader>o", "<cmd>NvimTreeFocus<cr>",  desc = "NvimTree Focus" },
     },
     config = function()
-      local api = require("nvim-tree.api")
+      local api = require('nvim-tree.api')
       api.events.subscribe(api.events.Event.FileCreated, function(file)
-        vim.cmd("edit " .. file.fname)
+        vim.cmd('edit ' .. file.fname)
       end)
 
       local function my_on_attach(bufnr)
@@ -48,51 +48,51 @@ return {
         end
 
         local function opts(desc)
-          return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+          return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
         end
 
         api.config.mappings.default_on_attach(bufnr)
 
-        vim.keymap.set("n", "l", edit_or_open, opts("Edit Or Open"))
-        vim.keymap.set("n", "L", vsplit_preview, opts("Vsplit Preview"))
-        vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Folder"))
-        vim.keymap.set("n", "H", api.node.navigate.parent, opts("Parent"))
+        vim.keymap.set('n', 'l', edit_or_open, opts('Edit Or Open'))
+        vim.keymap.set('n', 'L', vsplit_preview, opts('Vsplit Preview'))
+        vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Folder'))
+        vim.keymap.set('n', 'H', api.node.navigate.parent, opts('Parent'))
       end
 
-      require("nvim-tree").setup({
+      require('nvim-tree').setup({
         diagnostics = {
           enable = true,
           icons = {
-            hint = "",
-            info = "",
-            warning = "",
-            error = "",
+            hint = '',
+            info = '',
+            warning = '',
+            error = '',
           },
         },
         on_attach = my_on_attach,
         renderer = {
           group_empty = true,
           highlight_git = true,
-          root_folder_modifier = ":~",
+          root_folder_modifier = ':~',
           icons = {
             glyphs = {
               git = {
-                unstaged = "",
-                staged = "",
-                unmerged = "",
-                renamed = "➜",
-                untracked = "",
-                deleted = "",
-                ignored = "◌",
+                unstaged = '',
+                staged = '',
+                unmerged = '',
+                renamed = '➜',
+                untracked = '',
+                deleted = '',
+                ignored = '◌',
               },
             },
           },
         },
         -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
-        update_focused_file = {
-          enable = true,
-          update_root = true,
-        },
+        -- update_focused_file = {
+        --   enable = true,
+        --   update_root = true,
+        -- },
         git = {
           timeout = 500,
         },
@@ -104,10 +104,10 @@ return {
         },
         view = {
           width = 40,
-          side = "left",
+          side = 'left',
         },
         trash = {
-          cmd = "trash",
+          cmd = 'trash',
           require_confirm = true,
         },
         tab = {
@@ -119,13 +119,13 @@ return {
         },
       })
 
-      vim.api.nvim_create_autocmd("QuitPre", {
+      vim.api.nvim_create_autocmd('QuitPre', {
         callback = function()
           local invalid_win = {}
           local wins = vim.api.nvim_list_wins()
           for _, w in ipairs(wins) do
             local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
-            if bufname:match("NvimTree_") ~= nil then
+            if bufname:match('NvimTree_') ~= nil then
               table.insert(invalid_win, w)
             end
           end
@@ -140,11 +140,11 @@ return {
     end,
   },
   {
-    "antosha417/nvim-lsp-file-operations",
-    event = "VeryLazy",
+    'antosha417/nvim-lsp-file-operations',
+    event = 'VeryLazy',
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-tree.lua",
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-tree.lua',
     },
   },
 }

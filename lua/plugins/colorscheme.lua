@@ -47,18 +47,18 @@ return {
     priority = 1000,
   },
   {
-    'Tsuzat/NeoSolarized.nvim',
+    'nyoom-engineering/oxocarbon.nvim',
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
-    -- config = function()
-    --   require("NeoSolarized").setup({
-    --     theme = "light", -- dark or light
-    --   })
-    --   -- vim.cmd([[ colorscheme NeoSolarized ]])W
-    -- end,
+    config = function()
+      --   require("NeoSolarized").setup({
+      --     theme = "light", -- dark or light
+      --   })
+      -- vim.cmd([[ colorscheme oxocarbon ]])
+    end,
   },
   {
-    'miikanissi/modus-themes.nvim',
+    'scottmckendry/cyberdream.nvim',
     priority = 1000,
     lazy = false,
     -- config = function()
@@ -76,9 +76,15 @@ return {
     -- end,
   },
   {
-    'christianchiarulli/nvcode-color-schemes.vim',
-    lazy = false,
-    priority = 1000,
+    'folke/tokyonight.nvim',
+    opts = {
+      style = 'night',
+      -- transparent = true,
+      -- styles = {
+      --   sidebars = 'transparent',
+      --   floats = 'transparent',
+      -- },
+    },
   },
   {
     'eldritch-theme/eldritch.nvim',
@@ -91,12 +97,12 @@ return {
     name = 'rose-pine',
     opts = {
       variant = 'moon',
-      disable_background = is_transparent,
-      disable_float_background = is_transparent,
+      -- disable_background = is_transparent,
+      -- disable_float_background = is_transparent,
       styles = {
         bold = true,
         italic = true,
-        transparency = is_transparent,
+        -- transparency = is_transparent,
       },
     },
     lazy = false,
@@ -122,8 +128,8 @@ return {
         -- },
       })
       vim.o.background = 'dark'
-      require('ayu').colorscheme()
-      vim.cmd('colorscheme ayu')
+      -- require('ayu').colorscheme()
+      -- vim.cmd('colorscheme ayu')
     end,
   },
 }
