@@ -1,6 +1,7 @@
 return {
   {
     'anurag3301/nvim-platformio.lua',
+    enabled = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
