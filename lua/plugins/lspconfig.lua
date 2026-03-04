@@ -3,7 +3,7 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     opts = {
       ensure_installed = {
-        'clangd',
+        -- 'clangd',
         'clang-format',
       },
     },
@@ -37,20 +37,20 @@ return {
         --     },
         --   },
         -- },
-        arduino_language_server = {
-          -- Configuration for Arduino Language Server
-          cmd = {
-            'arduino-language-server',
-            '-cli',
-            'arduino-cli',
-            '-fqbn',
-            'arduino:avr:uno',
-            '-clangd',
-            'clangd',
-          },
-          filetypes = { 'ino', 'pde', 'cpp' },
-          root_dir = require('lspconfig.util').root_pattern('*.ino', '*.pde', '.git', '*.ini'),
-        },
+        -- arduino_language_server = {
+        --   -- Configuration for Arduino Language Server
+        --   cmd = {
+        --     'arduino-language-server',
+        --     '-cli',
+        --     'arduino-cli',
+        --     '-fqbn',
+        --     'arduino:avr:uno',
+        --     '-clangd',
+        --     'clangd',
+        --   },
+        --   filetypes = { 'ino', 'pde', 'cpp' },
+        --   root_dir = require('lspconfig.util').root_pattern('*.ino', '*.pde', '.git', '*.ini'),
+        -- },
         clangd = {
           -- Configuration for clangd
           cmd = {

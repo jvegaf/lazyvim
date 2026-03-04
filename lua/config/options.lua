@@ -45,7 +45,7 @@ local options = {
   winbar = '%=%m %f',
 }
 
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+-- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- vim.opt.fillchars = vim.opt.fillchars + 'eob: '
 -- vim.opt.fillchars:append {
 --   stl = ' ',
@@ -53,21 +53,21 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 -- vim.opt.shortmess:append('c')
 
-vim.opt.diffopt = { 'internal', 'filler', 'closeoff', 'hiddenoff', 'algorithm:minimal' }
-
-vim.opt.backspace = { 'start', 'eol', 'indent' }
-vim.opt.path:append({ '**' }) -- Finding files - Search down into subfolders
-vim.opt.wildignore:append({ '*/node_modules/*' })
+-- vim.opt.diffopt = { 'internal', 'filler', 'closeoff', 'hiddenoff', 'algorithm:minimal' }
+--
+-- vim.opt.backspace = { 'start', 'eol', 'indent' }
+-- vim.opt.path:append({ '**' }) -- Finding files - Search down into subfolders
+-- vim.opt.wildignore:append({ '*/node_modules/*' })
 
 -- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
+-- vim.cmd([[let &t_Cs = "\e[4:3m"]])
+-- vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- Turn off paste mode when leaving insert
-vim.api.nvim_create_autocmd('InsertLeave', {
-  pattern = '*',
-  command = 'set nopaste',
-})
+-- vim.api.nvim_create_autocmd('InsertLeave', {
+--   pattern = '*',
+--   command = 'set nopaste',
+-- })
 
 -- Helpful related items:
 --   1. :center, :left, :right
@@ -85,15 +85,17 @@ vim.api.nvim_create_autocmd('InsertLeave', {
 --     + "j" -- Auto-remove comments if possible.
 
 -- Add asterisks in block comments
-vim.opt.formatoptions:append({ 'r' })
-
+-- vim.opt.formatoptions:append({ 'r' })
+--
 -- vim.wo.signcolumn = 'yes'
 
-for k, v in pairs(options) do
-  vim.opt[k] = v
-end
+-- for k, v in pairs(options) do
+--   vim.opt[k] = v
+-- end
 
 -- Filetype
+
+vim.opt.showmode = true
 
 vim.filetype.add({
   extension = {
@@ -110,6 +112,6 @@ vim.g.maplocalleader = ','
 
 -- User Commands
 
-vim.api.nvim_create_user_command('Nv', function()
-  vim.cmd('NvimTreeFocus')
-end, { desc = 'Focus NvimTree' })
+-- vim.api.nvim_create_user_command('Nv', function()
+--   vim.cmd('NvimTreeFocus')
+-- end, { desc = 'Focus NvimTree' })
