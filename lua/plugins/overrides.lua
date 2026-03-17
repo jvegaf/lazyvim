@@ -11,6 +11,18 @@ return {
       auto_insert_mode = false, -- Enter insert mode when opening
     },
   },
+  {
+    'folke/sidekick.nvim',
+    opts = {
+      -- add any options here
+      cli = {
+        mux = {
+          backend = 'tmux',
+          enabled = true,
+        },
+      },
+    },
+  },
   -- {
   --   'iamcco/markdown-preview.nvim',
   --   cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
