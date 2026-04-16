@@ -112,6 +112,13 @@ vim.g.maplocalleader = ','
 
 -- User Commands
 
--- vim.api.nvim_create_user_command('Nv', function()
---   vim.cmd('NvimTreeFocus')
--- end, { desc = 'Focus NvimTree' })
+vim.api.nvim_create_user_command('Nv', function()
+  vim.cmd('NvimTreeFocus')
+end, { desc = 'ToVertical' })
+
+vim.api.nvim_create_user_command('OneWordPerLine', function(opts)
+  local line1 = opts.line1
+  local line2 = opts.line2
+
+  vim.cmd(string.format([[%d,%ds/\s\+/\r/g]], line1, line2))
+end, { range = '%' })
