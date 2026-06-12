@@ -104,7 +104,10 @@ vim.filetype.add({
 })
 
 vim.filetype.add({
-  ['.qss'] = 'css',
+  extension = {
+    qss = 'css',
+  },
+  -- ['.qss'] = 'css',
 })
 
 vim.g.mapleader = ' '
