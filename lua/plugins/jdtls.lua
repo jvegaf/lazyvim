@@ -1,12 +1,12 @@
 return {
-"mfussenegger/nvim-jdtls",
-dependencies = {
-  "williamboman/mason.nvim",
-  "pojokcodeid/auto-jdtls.nvim",
-  "rcarriga/nvim-notify",
-},
--- your opts go here
-opts = {},
+  'mfussenegger/nvim-jdtls',
+  dependencies = {
+    'mason-org/mason.nvim',
+    'pojokcodeid/auto-jdtls.nvim',
+    'rcarriga/nvim-notify',
+  },
+  -- your opts go here
+  opts = {},
 -- stylua: ignore
 config = function(_, opts)
   require("auto-jdtls").setup(opts)
@@ -51,4 +51,4 @@ config = function(_, opts)
   -- Set a Vim motion to <Space> + <Shift>J + u to update the project configuration
   vim.keymap.set('n', '<leader>Ju', "<Cmd> JdtUpdateConfig<CR>", { desc = "Java Update Config" })
 end,
-},
+}
