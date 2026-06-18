@@ -4,7 +4,7 @@ return {
     config = function()
       require('java-creator-nvim').setup({
         options = {
-          java_version = 17,
+          java_version = 26,
           auto_open = true,
           use_notify = true,
           custom_src_path = 'backend/src/main/java',
