@@ -93,6 +93,7 @@ local options = {
 --   vim.opt[k] = v
 -- end
 
+vim.g.lazyvim_blink_main = false
 -- Filetype
 
 vim.opt.showmode = true
