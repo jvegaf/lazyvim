@@ -10,14 +10,14 @@ local NS = { noremap = true, silent = true }
 
 -- General keymaps
 keymap.set("i", "jk", "<ESC>", NS) -- exit insert mode with jk
-keymap.set("n", "<leader>wq", ":wq<CR>", NS) -- save and quit
+-- keymap.set("n", "<leader>wq", ":wq<CR>", NS) -- save and quit
 keymap.set("n", "Q", ":q!<CR>", NS) -- quit without saving
 keymap.set("n", "W", ":w<CR>", NS)           -- save
 keymap.set("n", "q", ":bdelete<CR>", NS)     -- close buffer
 
 -- Buffers
-keymap.set("n", "H", ":BufferLineCyclePrev<cr>", NS)
-keymap.set("n", "L", ":BufferLineCycleNext<cr>", NS)
+keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", NS)
+keymap.set("n", "<Tab>", ":BufferLineCycleNext<cr>", NS)
 keymap.set("n", "<leader>bb", ":e #<cr>", NS)
 
 -- Tab management
@@ -65,7 +65,7 @@ keymap.set("v", ">", ">gv", { desc = "Stay in indent mode" })
 keymap.set("n", "<C-m>", "<C-i>", NS)
 
 -- Copilot Chat
-keymap.set("n", "<leader>am", ":CopilotChatCommit<cr>", NS)
+-- keymap.set("n", "<leader>am", ":CopilotChatCommit<cr>", NS)
 
 -- Treesj
 keymap.set("n", "<leader>j", function()
