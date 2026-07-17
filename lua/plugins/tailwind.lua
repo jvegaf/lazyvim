@@ -2,6 +2,7 @@ return {
   {
     'roobert/tailwindcss-colorizer-cmp.nvim',
     -- optionally, override the default options:
+    enabled = false;
     config = function()
       require('tailwindcss-colorizer-cmp').setup({
         color_square_width = 2,
@@ -13,6 +14,7 @@ return {
   {
     'MaximilianLloyd/tw-values.nvim',
     lazy = false,
+    enabled = false;
     keys = {
       { '<leader>sv', '<cmd>TWValues<cr>', desc = 'Show tailwind CSS values' },
     },

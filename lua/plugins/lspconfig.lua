@@ -20,9 +20,9 @@ return {
     opts = {
       inlay_hints = { enabled = false }, -- Disable inlay hints
       servers = {
-        cssls = {},
-        css_variables = {},
-        cssmodules_ls = {},
+        -- cssls = {},
+        -- css_variables = {},
+        -- cssmodules_ls = {},
         jdtls = {},
         groovy = {},
         -- angularls = {
