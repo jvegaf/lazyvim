@@ -94,9 +94,19 @@ local options = {
 -- end
 
 vim.g.lazyvim_blink_main = false
--- Filetype
+-- In case you don't want to use `:LazyExtras`,
+-- then you need to set the option below.
+vim.g.lazyvim_picker = 'snacks'
 
-vim.opt.showmode = true
+-- Statuscolumn: snacks' own implementation (satisfies its health check).
+-- LazyVim's default (%!v:lua.LazyVim.statuscolumn()) delegates to snacks too,
+-- but the health check looks for the literal `snacks.statuscolumn` string.
+vim.opt.statuscolumn = [[%!v:lua.require('snacks.statuscolumn').get()]]
+
+-- Treesitter-based folds (native, no nvim-ufo). LazyVim's own foldexpr
+-- falls back to "0" when the buffer has no treesitter parser.
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.LazyVim.treesitter.foldexpr()'
 
 vim.filetype.add({
   extension = {

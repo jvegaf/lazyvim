@@ -39,7 +39,6 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.editor.outline' },
     { import = 'lazyvim.plugins.extras.editor.refactoring' },
     { import = 'lazyvim.plugins.extras.editor.snacks_picker' },
-    { import = 'lazyvim.plugins.extras.editor.telescope' },
     -- { import = 'lazyvim.plugins.extras.lang.typescript.biome' },
     { import = 'lazyvim.plugins.extras.lang.clangd' },
     { import = 'lazyvim.plugins.extras.lang.docker' },

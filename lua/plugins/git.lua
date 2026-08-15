@@ -40,6 +40,7 @@ return {
   },
   {
     'sindrets/diffview.nvim',
+    enabled = false,
     cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewToggleFiles', 'DiffviewFocusFiles' },
     keys = {
       { '<leader>gd', '<cmd>DiffviewOpen<cr>', desc = 'Open diff' },
@@ -49,28 +50,13 @@ return {
     },
   },
   {
-    'akinsho/git-conflict.nvim',
-    version = '*',
-    config = function()
-      require('git-conflict').setup({
-        disable_diagnostics = true, -- This will disable the diagnostics in a buffer whilst it is conflicted
-        highlights = { -- They must have background color, otherwise the default color will be used
-          incoming = 'DiffText',
-          current = 'DiffAdd',
-        },
-      })
-
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'GitConflictDetected',
-        callback = function()
-          vim.notify('Conflict detected in ' .. vim.fn.expand('<afile>'))
-          vim.keymap.set('n', 'cww', function()
-            engage.conflict_buster()
-            create_buffer_local_mappings()
-          end)
-        end,
-      })
-    end,
+    'esmuellert/codediff.nvim',
+    cmd = 'CodeDiff',
+    keys = {
+      { '<leader>gd', '<cmd>CodeDiff HEAD<cr>', desc = 'Open diff from last commit' },
+      { '<leader>gf', '<cmd>CodeDiff history<cr>', desc = 'View file history' },
+      { '<leader>gf', ":'<,'>CodeDiff history<cr>", mode = { 'v' }, desc = 'View selected history' },
+    },
   },
   {
     'wintermute-cell/gitignore.nvim',
@@ -79,18 +65,22 @@ return {
     end,
   },
   {
-    'nvim-telescope/telescope.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim',
-      'paopaol/telescope-git-diffs.nvim',
-    },
-    config = function()
-      require('telescope').load_extension('git_diffs')
-    end,
+    'folke/snacks.nvim',
     keys = {
-      { '<leader>gz', '<cmd>Telescope git_diffs  diff_commits<CR>', desc = 'Telescope diff_commits' },
-      { '<leader>gb', '<cmd>Telescope git_branches <CR>', desc = 'Branches' },
+      {
+        '<leader>gz',
+        function()
+          Snacks.picker.git_log()
+        end,
+        desc = 'Commits (diff preview)',
+      },
+      {
+        '<leader>gb',
+        function()
+          Snacks.picker.git_branches()
+        end,
+        desc = 'Branches',
+      },
     },
   },
 }

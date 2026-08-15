@@ -21,6 +21,7 @@ local prompts = {
 
 return {
   { 'nvim-neo-tree/neo-tree.nvim', enabled = false },
+  { 'stevearc/dressing.nvim', enabled = false },
   {
     'folke/trouble.nvim',
     opts = { use_diagnostic_signs = true }, -- Use diagnostic signs for trouble.nvim
@@ -45,6 +46,21 @@ return {
       },
     },
   },
+  {
+    'folke/snacks.nvim',
+    opts = {
+      indent = { enabled = true },
+      input = { enabled = true },
+      notifier = { enabled = true },
+      picker = { ui_select = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      toggle = { map = LazyVim.safe_keymap_set },
+      words = { enabled = true },
+    },
+  },
+
   -- {
   --   'iamcco/markdown-preview.nvim',
   --   cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },

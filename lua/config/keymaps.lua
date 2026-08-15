@@ -13,11 +13,11 @@ keymap.set("i", "jk", "<ESC>", NS) -- exit insert mode with jk
 -- keymap.set("n", "<leader>wq", ":wq<CR>", NS) -- save and quit
 keymap.set("n", "Q", ":q!<CR>", NS) -- quit without saving
 keymap.set("n", "W", ":w<CR>", NS)           -- save
-keymap.set("n", "q", ":bdelete<CR>", NS)     -- close buffer
+keymap.set("n", "<M-q>", ":bdelete<CR>", NS)     -- close buffer
 
 -- Buffers
-keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<cr>", NS)
-keymap.set("n", "<Tab>", ":BufferLineCycleNext<cr>", NS)
+keymap.set("n", "<M-,>", ":BufferLineCyclePrev<cr>", NS)
+keymap.set("n", "<M-.>", ":BufferLineCycleNext<cr>", NS)
 keymap.set("n", "<leader>bb", ":e #<cr>", NS)
 
 -- Tab management

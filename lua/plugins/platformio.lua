@@ -1,14 +1,20 @@
 return {
   {
     'anurag3301/nvim-platformio.lua',
-    -- enabled = false,
+    -- Disabled: piolsserial crashes on startup (vim.json.decode(nil) when
+    -- `platformio device list --json-output` returns no stdout). Plugin needs
+    -- a fork to fix serial parsing and trim deps (toggleterm, etc.).
+    enabled = false,
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
+      -- 'nvim-lua/plenary.nvim',
+      -- 'nvim-telescope/telescope.nvim',
       'akinsho/toggleterm.nvim',
     },
     config = function()
-      require('platformio').setup({})
+      require('platformio').setup({
+        lsp = 'clangd',
+        picker_backend = 'ui_select',
+      })
 
       vim.api.nvim_create_user_command('PioInit', "TermExec cmd='pio project init'", {})
       vim.api.nvim_create_user_command('PioBuild', "TermExec cmd='pio run'", {})
