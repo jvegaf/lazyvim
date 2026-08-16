@@ -62,7 +62,7 @@ return {
   },
   {
     'saghen/blink.cmp',
-    version = '1.*',
+    -- version = '1.*',
     dependencies = {
       'MahanRahmati/blink-nerdfont.nvim',
       -- {
