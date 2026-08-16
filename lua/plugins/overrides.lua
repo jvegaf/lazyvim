@@ -62,27 +62,40 @@ return {
   },
   {
     'saghen/blink.cmp',
-    -- version = '1.*',
     dependencies = {
       'MahanRahmati/blink-nerdfont.nvim',
-      -- {
-      --   'mikavilpas/blink-ripgrep.nvim',
-      --   version = '*', -- use the latest stable version
-      -- },
+      {
+        'mikavilpas/blink-ripgrep.nvim',
+        version = '*', -- use the latest stable version
+      },
       -- 'moyiz/blink-emoji.nvim',
       -- 'mgalliou/blink-cmp-tmux',
       'alexandre-abrioux/blink-cmp-npm.nvim',
     },
     opts = {
-      fuzzy = { implementation = 'prefer_rust_with_warning' },
+      -- fuzzy = { implementation = 'prefer_rust_with_warning' },
+      completion = {
+        menu = {
+          border = 'rounded',
+          direction_priority = { 'n', 's' },
+          draw = {
+            columns = {
+              { 'label', 'label_description', gap = 1 },
+              { 'kind_icon', 'kind' },
+            },
+          },
+        },
+      },
+
       sources = {
         default = {
           'nerdfont',
-          -- 'ripgrep', -- 👈🏻 add "ripgrep" here
+          'ripgrep', -- 👈🏻 add "ripgrep" here
           -- 'emoji', -- 👈🏻 add "emoji" here
           -- 'tmux',
           'npm',
         },
+
         providers = {
           nerdfont = {
             module = 'blink-nerdfont',
@@ -93,11 +106,11 @@ return {
               trigger = ':-)', -- Customize the trigger. Defaults to ":"
             },
           },
-          -- ripgrep = {
-          --   module = 'blink-ripgrep',
-          --   name = 'Ripgrep',
-          --   opts = {},
-          -- },
+          ripgrep = {
+            module = 'blink-ripgrep',
+            name = 'Ripgrep',
+            opts = {},
+          },
           -- emoji = {
           --   module = 'blink-emoji',
           --   name = 'Emoji',
