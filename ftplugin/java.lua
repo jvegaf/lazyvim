@@ -64,7 +64,7 @@ local config = {
   settings = {
     java = {
       -- TODO Replace this with the absolute path to your main java version (JDTLS requires JDK 21 or higher)
-      home = vim.fn.glob(home .. '/.local/share/mise/installs/java/26.0.1'),
+      home = vim.fn.glob(home .. '/.local/share/mise/installs/java/25.0.2'),
       eclipse = {
         downloadSources = true,
       },
@@ -74,8 +74,8 @@ local config = {
         -- The runtimes' name parameter needs to match a specific Java execution environments.  See https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request and search "ExecutionEnvironment".
         runtimes = {
           {
-            name = 'JavaSE-26',
-            path = vim.fn.glob(home .. '/.local/share/mise/installs/java/26.0.1'),
+            name = 'JavaSE-25',
+            path = vim.fn.glob(home .. '/.local/share/mise/installs/java/25.0.2'),
           },
         },
       },
