@@ -48,7 +48,7 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.lang.kotlin' },
     { import = 'lazyvim.plugins.extras.lang.java' },
     { import = 'lazyvim.plugins.extras.lang.markdown' },
-    -- { import = 'lazyvim.plugins.extras.lang.tailwind' },
+    { import = 'lazyvim.plugins.extras.lang.svelte' },
     { import = 'lazyvim.plugins.extras.lang.toml' },
     -- { import = 'lazyvim.plugins.extras.lang.typescript' },
     { import = 'lazyvim.plugins.extras.test.core' },
@@ -58,7 +58,6 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.util.chezmoi' },
     { import = 'lazyvim.plugins.extras.util.mini-hipatterns' },
     { import = 'lazyvim.plugins.extras.util.project' },
-    { import = 'lazyvim.plugins.extras.util.rest' },
 
     -- Import/override with your plugins
     { import = 'plugins' },
