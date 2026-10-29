@@ -1,5 +1,5 @@
 return {
-  'jvegaf/browse.nvim',
+  'lalitmee/browse.nvim',
   dependencies = {
     'nvim-telescope/telescope.nvim',
   },
