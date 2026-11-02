@@ -4,15 +4,9 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      style = {
-        transparent = true,
-      },
-    },
-  },
-  {
-    'LazyVim/Lazyvim',
-    opts = {
-      colorsheme = 'astrodark',
+      -- style = {
+      --   transparent = true,
+      -- },
     },
   },
   {
@@ -136,4 +130,10 @@ return {
   --     -- vim.cmd('colorscheme ayu')
   --   end,
   -- },
+  {
+    'LazyVim/Lazyvim',
+    opts = {
+      colorscheme = 'astrodark',
+    },
+  },
 }
