@@ -136,3 +136,5 @@ vim.api.nvim_create_user_command('OneWordPerLine', function(opts)
 
   vim.cmd(string.format([[%d,%ds/\s\+/\r/g]], line1, line2))
 end, { range = '%' })
+
+require('config.keymaps')
