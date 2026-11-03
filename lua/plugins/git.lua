@@ -40,10 +40,10 @@ return {
   },
   {
     'sindrets/diffview.nvim',
-    enabled = false,
+    enabled = true,
     cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewToggleFiles', 'DiffviewFocusFiles' },
     keys = {
-      { '<leader>gd', '<cmd>DiffviewOpen<cr>', desc = 'Open diff' },
+      -- { '<leader>gd', '<cmd>DiffviewOpen<cr>', desc = 'Open diff' },
       { '<leader>gD', '<cmd>DiffviewClose<cr>', desc = 'Close diff' },
       { '<leader>gf', '<cmd>DiffviewFileHistory %<cr>', desc = 'View file history' },
       { '<leader>gf', ":'<,'>DiffviewFileHistory<cr>", mode = { 'v' }, desc = 'View selected history' },
@@ -54,15 +54,9 @@ return {
     cmd = 'CodeDiff',
     keys = {
       { '<leader>gd', '<cmd>CodeDiff HEAD<cr>', desc = 'Open diff from last commit' },
-      { '<leader>gf', '<cmd>CodeDiff history<cr>', desc = 'View file history' },
-      { '<leader>gf', ":'<,'>CodeDiff history<cr>", mode = { 'v' }, desc = 'View selected history' },
+      -- { '<leader>gf', '<cmd>CodeDiff history<cr>', desc = 'View file history' },
+      -- { '<leader>gf', ":'<,'>CodeDiff history<cr>", mode = { 'v' }, desc = 'View selected history' },
     },
-  },
-  {
-    'wintermute-cell/gitignore.nvim',
-    config = function()
-      require('gitignore')
-    end,
   },
   {
     'folke/snacks.nvim',
