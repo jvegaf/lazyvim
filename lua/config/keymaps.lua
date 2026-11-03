@@ -3,14 +3,14 @@ local NS = { noremap = true, silent = true }
 
 -- General keymaps
 map.set('i', 'jk', '<ESC>', NS) -- exit insert mode with jk
--- map.set("n", "<leader>wq", ":wq<CR>", NS) -- save and quit
-map.set('n', 'Q', ':q!<CR>', NS) -- quit without saving
+map.set('i', 'jj', '<ESC>', NS) -- exit insert mode with jk
+map.set('n', 'Q', ':q<CR>', NS) -- quit without saving
 map.set('n', 'W', ':w<CR>', NS) -- save
-map.set('n', '<M-q>', ':bdelete<CR>', NS) -- close buffer
 
 -- Buffers
-map.set('n', '<M-,>', ':BufferLineCyclePrev<cr>', NS)
-map.set('n', '<M-.>', ':BufferLineCycleNext<cr>', NS)
+map.set('n', 'H', ':BufferLineCyclePrev<cr>', NS)
+map.set('n', 'L', ':BufferLineCycleNext<cr>', NS)
+map.set('n', 'q', ':bdelete<CR>', NS) -- close buffer
 map.set('n', '<leader>bb', ':e #<cr>', NS)
 
 -- Tab management
@@ -51,7 +51,7 @@ map.set('v', 'p', '"_dP', NS)
 map.set('n', '<ESC>', ':nohlsearch<Bar>:echo<CR>', NS)
 
 -- Select all
-map.set('n', '<C-a>', 'gg<S-v>G', NS)
+-- map.set('n', '<C-a>', 'gg<S-v>G', NS)
 
 map.set('n', 'vv', 'V', NS)
 
