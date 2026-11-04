@@ -10,6 +10,8 @@ return {
       return pantran.motion_translate() .. '_'
     end, opts)
     vim.keymap.set('x', '<leader>tr', pantran.motion_translate, opts)
+    -- gr for replace by translation
+    -- gt for change target language
 
     pantran.setup({
       default_engine = 'google',
