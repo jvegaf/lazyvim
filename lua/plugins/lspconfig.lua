@@ -5,8 +5,8 @@ return {
       ensure_installed = {
         -- 'clangd',
         'clang-format',
-        'java-debug-adapter',
-        'java-test',
+        -- 'java-debug-adapter',
+        -- 'java-test',
         -- 'nixpkgs-fmt',
       },
     },
@@ -23,8 +23,8 @@ return {
         -- cssls = {},
         -- css_variables = {},
         -- cssmodules_ls = {},
-        jdtls = {},
-        groovy = {},
+        -- jdtls = {},
+        -- groovy = {},
         -- angularls = {
         --   -- Configuration for Angular Language Server
         --   root_dir = function(fname)
@@ -83,10 +83,10 @@ return {
         docker_compose_language_service = {},
       },
       setup = {
-        jdtls = function ()
-          return true
-        end
-      }
+        -- jdtls = function ()
+        --   return true
+        -- end
+      },
     },
   },
 }
