@@ -92,7 +92,7 @@ local options = {
 -- for k, v in pairs(options) do
 --   vim.opt[k] = v
 -- end
-
+vim.g.lazyvim_rust_diagnostics = 'rust-analyzer'
 vim.g.lazyvim_blink_main = false
 -- In case you don't want to use `:LazyExtras`,
 -- then you need to set the option below.
