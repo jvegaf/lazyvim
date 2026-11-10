@@ -1,5 +1,4 @@
 {
-  "name": "personal-snippets",
   "contributes": {
     "snippets": [
       {
@@ -55,7 +54,14 @@
           "html"
         ],
         "path": "./html.json"
+      },
+      {
+        "language": [
+          "lua"
+        ],
+        "path": "./lua.json"
       }
     ]
-  }
+  },
+  "name": "personal-snippets"
 }
