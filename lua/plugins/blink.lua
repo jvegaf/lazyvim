@@ -54,16 +54,16 @@ return {
               -- trigger = function()
               --   return { ':' }
               -- end,
-              trigger = '::',
+              trigger = ':',
             },
-            should_show_items = function()
-              return vim.tbl_contains(
-                -- Enable emoji completion only for git commits and markdown.
-                -- By default, enabled for all file-types.
-                { 'gitcommit', 'markdown' },
-                vim.o.filetype
-              )
-            end,
+            -- should_show_items = function()
+            --   return vim.tbl_contains(
+            --     -- Enable emoji completion only for git commits and markdown.
+            --     -- By default, enabled for all file-types.
+            --     { 'gitcommit', 'markdown' },
+            --     vim.o.filetype
+            --   )
+            -- end,
           },
           tmux = {
             module = 'blink-cmp-tmux',
@@ -88,12 +88,13 @@ return {
             score_offset = 15, -- Tune by preference
             opts = {
               insert = true, -- Insert nerdfont icon (default) or complete its name
-              trigger = ':nf', -- Customize the trigger. Defaults to ":"
+              trigger = 'nf', -- Customize the trigger. Defaults to ":"
             },
           },
           ripgrep = {
             module = 'blink-ripgrep',
             name = 'Ripgrep',
+            score_offset = 25,
             opts = {},
           },
           npm = {
@@ -101,7 +102,7 @@ return {
             module = 'blink-cmp-npm',
             async = true,
             -- optional - make blink-cmp-npm completions top priority (see `:h blink.cmp`)
-            score_offset = 100,
+            score_offset = 10,
             -- optional - blink-cmp-npm config
             opts = {
               ignore = {},
