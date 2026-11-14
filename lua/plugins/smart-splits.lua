@@ -2,6 +2,7 @@
 -- Install smart-splits.nvim and a backend
 return {
   'smart-splits-nvim/smart-splits.nvim',
+  lazy=false,
   version = '^3.0.0',
   dependencies = {
     { 'smart-splits-nvim/backend-tmux', main = 'smart-splits-backend-tmux' },
@@ -13,10 +14,7 @@ return {
     },
   },
   opts = {
-    mux = { backend = { 'smart-splits-backend-tmux', 'smart-splits-backend-herdr', 'smart-splits-backend-zellij-lua' } },
-    -- Match tmux's @smart-splits_at_edge 'wrap' setting
-    move = { at_edge = 'wrap' },
-    resize = { at_edge = 'wrap' },
+    mux = { backend = { 'smart-splits-backend-herdr', 'smart-splits-backend-tmux', 'smart-splits-backend-zellij-lua' } },
   },
   keys = {
     -- Resize splits

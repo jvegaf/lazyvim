@@ -97,6 +97,8 @@ vim.g.lazyvim_blink_main = false
 -- In case you don't want to use `:LazyExtras`,
 -- then you need to set the option below.
 vim.g.lazyvim_picker = 'snacks'
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
 
 -- Statuscolumn: snacks' own implementation (satisfies its health check).
 -- LazyVim's default (%!v:lua.LazyVim.statuscolumn()) delegates to snacks too,
