@@ -17,12 +17,9 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   spec = {
     { 'LazyVim/LazyVim', import = 'lazyvim.plugins' },
-    -- { import = 'lazyvim.plugins.extras.editor.snacks_explorer' },
-    -- Import any extra modules here
     -- { import = 'lazyvim.plugins.extras.ai.copilot' },
     -- { import = 'lazyvim.plugins.extras.ai.copilot-chat' },
     { import = 'lazyvim.plugins.extras.ai.sidekick' },
-    -- { import = 'lazyvim.plugins.extras.coding.nvim-cmp' },
     { import = 'lazyvim.plugins.extras.coding.blink' },
     { import = 'lazyvim.plugins.extras.coding.mini-comment' },
     { import = 'lazyvim.plugins.extras.coding.mini-surround' },
@@ -37,6 +34,7 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.editor.illuminate' },
     { import = 'lazyvim.plugins.extras.editor.inc-rename' },
     { import = 'lazyvim.plugins.extras.editor.mini-diff' },
+    { import = 'lazyvim.plugins.extras.editor.neo-tree' },
     { import = 'lazyvim.plugins.extras.editor.outline' },
     { import = 'lazyvim.plugins.extras.editor.refactoring' },
     { import = 'lazyvim.plugins.extras.editor.snacks_picker' },
