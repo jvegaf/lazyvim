@@ -20,7 +20,6 @@ local prompts = {
 }
 
 return {
-  -- { 'nvim-neo-tree/neo-tree.nvim', enabled = false },
   { 'stevearc/dressing.nvim', enabled = false },
   {
     'folke/trouble.nvim',

@@ -10,7 +10,7 @@ map.set('n', 'W', ':w<CR>', NS) -- save
 -- Buffers
 map.set('n', 'H', ':BufferLineCyclePrev<cr>', NS)
 map.set('n', 'L', ':BufferLineCycleNext<cr>', NS)
-map.set('n', 'q', ':bdelete<CR>', NS) -- close buffer
+-- map.set('n', 'q', ':bdelete<CR>', NS) -- close buffer
 map.set('n', '<leader>bb', ':e #<cr>', NS)
 
 -- Tab management
